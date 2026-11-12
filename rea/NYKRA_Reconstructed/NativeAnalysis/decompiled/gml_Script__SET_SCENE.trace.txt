@@ -1,92 +1,103 @@
-LNone: undefined8 * gml_Script__SET_SCENE(longlong *param_1,undefined8 param_2,undefined8 *param_3) {
+LNone: _SET_SCENE();
   L0: FUN_1416ab750(gml_Script__SET_SCENE);
+  L0: with (oControl) {
   L0: if (0 < iVar2) {
     L0: do {
       L20: if ((*(int *)(*(longlong *) (*(longlong *)(unaff_GS_OFFSET + 0x58) + (ulonglong)__tls_index * 8) + 4) < _DAT_14217e8ec) && (FUN_14193dcf0(&DAT_14217e8ec), _DAT_14217e8ec == -1)) {
-      L20: cmp(DAT_14217e860, 79)
-      L20: cmp(DAT_14217e874, 79)
+      L20: cmp(DAT_14217e860, puVar6)
+      L20: cmp(DAT_14217e874, puVar6)
           L23: uVar7 = uStack_80;
           L23: cmp(puVar4, uStack_80)
           L23: if (iVar2 == 0) {
             L24: uVar7 = uStack_80;
           L27: if ((*(int *)(*(longlong *) (*(longlong *)(unaff_GS_OFFSET + 0x58) + (ulonglong)__tls_index * 8) + 4) < iRam000000014217ea30) && (FUN_14193dcf0(0x14217ea30), iRam000000014217ea30 == -1)) {
-          L27: cmp(0x14217e8f0, uStack_80)
+          L27: cmp(0x14217e8f0, puVar4)
           L27: if (iVar2 == 0) {
             L27: if (iVar2 == 1) {
             L48: else if (iVar2 == 0) {
-            L43: cmp(0x14217e904, uStack_80)
+            L43: cmp(0x14217e904, puVar4)
             L43: if (iVar2 == 0) {
-            L43: cmp(0x14217e918, uStack_80)
+            L43: cmp(0x14217e918, puVar4)
             L43: if (iVar2 == 0) {
-            L43: cmp(0x14217e92c, uStack_80)
+            L43: cmp(0x14217e92c, puVar4)
             L43: if (iVar2 == 0) {
-            L43: cmp(0x14217e940, uStack_80)
+            L43: cmp(0x14217e940, puVar4)
             L43: if (iVar2 == 0) {
-            L43: cmp(0x14217e954, uStack_80)
+            L43: cmp(0x14217e954, puVar4)
             L43: if (iVar2 == 0) {
-            L43: cmp(0x14217e968, uStack_80)
+            L43: cmp(0x14217e968, puVar4)
             L43: if (iVar2 == 0) {
-            L43: cmp(0x14217e97c, uStack_80)
+            L43: cmp(0x14217e97c, puVar4)
             L43: if (iVar2 == 0) {
-            L43: cmp(0x14217e990, uStack_80)
+            L43: cmp(0x14217e990, puVar4)
             L43: if (iVar2 == 0) {
-            L43: cmp(0x14217e9a4, uStack_80)
+            L43: cmp(0x14217e9a4, puVar4)
             L43: if (iVar2 == 0) {
-            L43: cmp(0x14217e9b8, uStack_80)
+            L43: cmp(0x14217e9b8, puVar4)
             L43: if (iVar2 == 0) {
-            L43: cmp(0x14217e9cc, uStack_80)
+            L43: cmp(0x14217e9cc, puVar4)
             L43: if (iVar2 == 0) {
-            L43: cmp(0x14217e9e0, uStack_80)
+            L43: cmp(0x14217e9e0, puVar4)
             L43: if (iVar2 == 0) {
-            L43: cmp(0x14217e9f4, uStack_80)
+            L43: cmp(0x14217e9f4, puVar4)
             L43: if (iVar2 == 0) {
-            L43: cmp(0x14217ea08, uStack_80)
+            L43: cmp(0x14217ea08, puVar4)
             L43: if (iVar2 == 0) {
-            L43: cmp(0x14217ea1c, uStack_80)
+            L43: cmp(0x14217ea1c, puVar4)
             L43: if (iVar2 == 0) {
           L43: if (iVar2 < 1) {
-            L50: gml_Script_instance_create_one(plStack_68,uStack_a0,&uStack_b0,4,&puStack_128);
-          L55: uVar7 = uStack_80;
+            L50: instance_create_one(1, 1, -111, 369 /*oSun_Mal*/);
+          L55: uVar7 = puVar4;
           L57: if ((*(int *)(*(longlong *) (*(longlong *)(unaff_GS_OFFSET + 0x58) + (ulonglong)__tls_index * 8) + 4) < iRam000000014217ed38) && (FUN_14193dcf0(0x14217ed38), iRam000000014217ed38 == -1)) {
           L57: do {
-            L57: cmp(uVar10 * 0x14 + 0x14217ea40, uStack_80)
+            L57: cmp(uVar10 * 0x14 + 0x14217ea40, puVar4)
             L57: if (iVar2 == 0) {
           L111: } while (uVar10 < 0x26);
           L115: uVar7 = uStack_140;
           L118: if (iVar2 < 1) {
-            L119: gml_Script_instance_create_one(plStack_68,uStack_a0,&uStack_b0,4,&puStack_128);
+            L119: instance_create_one(1, 1, -111, 370 /*oSun_Mex*/);
           L125: if ((*(int *)(*(longlong *) (*(longlong *)(unaff_GS_OFFSET + 0x58) + (ulonglong)__tls_index * 8) + 4) < iRam000000014217ed54) && (FUN_14193dcf0(0x14217ed54), iRam000000014217ed54 == -1)) {
-          L125: cmp(0x14217ed40, uStack_80)
+          L125: cmp(0x14217ed40, puVar4)
           L125: if (iVar2 == 0 && iRam000000014217ed50 == 0) {
+          L138: MUSIC = -1;
           L139: if ((*(int *)(*(longlong *) (*(longlong *)(unaff_GS_OFFSET + 0x58) + (ulonglong)__tls_index * 8) + 4) < iRam000000014217ed74) && (FUN_14193dcf0(0x14217ed74), iRam000000014217ed74 == -1)) {
-          L139: cmp(0x14217ed60, uStack_80)
+          L139: cmp(0x14217ed60, puVar4)
           L139: if (iVar2 == 0 && iRam000000014217ed70 == 0) {
           L148: if (iVar2 < 1) {
-            L149: gml_Script_instance_create_one(plStack_68,uStack_a0,&uStack_b0,4,&puStack_128);
+            L149: instance_create_one(1, 1, -111, 371 /*oSun_Irn*/);
+          L154: MUSIC = -1;
+          L155: MUSIC = 39;
+          L156: MUSIC = -1;
           L157: if ((*(int *)(*(longlong *) (*(longlong *)(unaff_GS_OFFSET + 0x58) + (ulonglong)__tls_index * 8) + 4) < iRam000000014217edf8) && (FUN_14193dcf0(0x14217edf8), iRam000000014217edf8 == -1)) {
-          L157: cmp(0x14217ed80, uStack_80)
-          L157: cmp(0x14217ed94, uStack_80)
+          L157: cmp(0x14217ed80, puVar4)
+          L157: cmp(0x14217ed94, puVar4)
             L157: if (iVar2 != 0) goto code_r0x000140049772;
-            L166: cmp(0x14217eda8, uStack_80)
-            L166: cmp(0x14217edbc, uStack_80)
+            L164: MUSIC = 403;
+            L165: MUSIC = 669;
+            L166: cmp(0x14217eda8, puVar4)
+            L166: cmp(0x14217edbc, puVar4)
               L166: if (iVar2 == 0) goto code_r0x000140049a3a;
-              L166: cmp(0x14217edd0, uStack_80)
+              L166: cmp(0x14217edd0, puVar4)
               L166: if (iVar3 == 0) goto joined_r0x00014004976c;
-              L166: cmp(0x14217ede4, uStack_80)
+              L166: cmp(0x14217ede4, puVar4)
               L166: if (iVar3 == 0) goto joined_r0x000140049dda;
+            L169: MUSIC = -1;
           L170: if (iVar2 < 1) {
-            L172: gml_Script_instance_create_one(plStack_68,uStack_a0,&uStack_b0,4,&puStack_128);
-          L178: 405 = uStack_80;
+            L172: instance_create_one(1, 1, -111, 372 /*oSun_Sep*/);
+          L178: 405 = puVar4;
           L179: if ((*(int *)(*(longlong *) (*(longlong *)(unaff_GS_OFFSET + 0x58) + (ulonglong)__tls_index * 8) + 4) < iRam000000014217ee28) && (FUN_14193dcf0(0x14217ee28), iRam000000014217ee28 == -1)) {
-          L179: cmp(0x14217ee00, uStack_80)
+          L179: cmp(0x14217ee00, puVar4)
           L179: if (iVar2 == 0) {
             L179: if (iVar2 == 1) {
               L185: if (iVar2 != 0) goto code_r0x000140049528;
-            L181: cmp(0x14217ee14, uStack_80)
+            L181: cmp(0x14217ee14, puVar4)
             L181: if (iVar2 == 0) {
           L192: if (iVar2 < 1) {
-            L193: gml_Script_instance_create_one(plStack_68,uStack_a0,&uStack_b0,4,&puStack_128);
-          L210: gml_Script_instance_create_one(plStack_68,uStack_a0,&uStack_b0,4,&puStack_128);
+            L193: instance_create_one(1, 1, -111, 18 /*oSun_Quo*/);
+          L199: MUSIC = 38;
+          L206: MUSIC = 502;
+          L210: instance_create_one(1, 1, -111, 10);
     L211: } while (cVar1 != '\0');
+  L211: } // fim do with
   L211: if (lStack_160 != 0) {
   L211: return puStack_150;

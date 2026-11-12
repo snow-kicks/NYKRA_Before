@@ -5,7 +5,7 @@ LNone: undefined8 * gml_Script__save_ds_list (undefined8 param_1,undefined8 para
   L2: if (cVar1 == '\0') {
     L9: if (param_4 < 1) {
       L9: if ((*(uint *)((longlong)pdVar4 + 0xc) & 0xffffff) != 0) goto LAB_1401a04c7;
-    L9: buffer_write(buf, buffer_u16, uStack_a0);
+    L9: buffer_write(buf, buffer_u16, 0);
   L3: if (param_4 < 2) {
   L3: if (param_4 < 1) {
     L3: if ((*(uint *)((longlong)pdVar4 + 0xc) & 0xffffff) != 0) goto LAB_1401a0521;
@@ -13,12 +13,13 @@ LNone: undefined8 * gml_Script__save_ds_list (undefined8 param_1,undefined8 para
   L3: if (param_4 < 2) {
   L3: cmp(ds_list_size(puVar5), 1)
   L3: if (-1 < iVar2) {
+    L5: i_80 = 0;
     L5: while( true ) {
       L5: if (1 < param_4) {
-      L5: cmp(dStack_80, ds_list_size(puVar5))
+      L5: cmp(i_80, ds_list_size(puVar5))
       L5: if ((iVar2 == -2) || (-1 < iVar2)) break;
       L6: if (1 < param_4) {
       L6: if (param_4 < 1) {
         L6: if ((*(uint *)((longlong)pdVar4 + 0xc) & 0xffffff) != 0) goto LAB_1401a0867;
-      L6: buffer_write(buf, buffer_f32, ds_list_find_value(puVar5, dStack_80));
+      L6: buffer_write(buf, buffer_f32, ds_list_find_value(puVar5, i_80));
   L6: return param_3;

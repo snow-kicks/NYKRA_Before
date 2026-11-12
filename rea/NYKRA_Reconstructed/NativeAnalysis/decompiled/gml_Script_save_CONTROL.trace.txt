@@ -1,7 +1,8 @@
-LNone: undefined8 * gml_Script_save_CONTROL(undefined8 param_1,undefined8 param_2,undefined8 *param_3) {
+LNone: save_CONTROL();
   L0: FUN_1416ab750(gml_Script_save_CONTROL);
   L2: var v_70 = buffer_create(8, 1, 1);
   L3: buffer_seek(v_70, 0, 0);
+  L3: with (oControl) {
   L3: if (0 < iVar3) {
     L3: do {
       L7: var v_148 = object_get_name(object_index);
@@ -34,9 +35,11 @@ LNone: undefined8 * gml_Script_save_CONTROL(undefined8 param_1,undefined8 param_
       L34: buffer_write(buf, buffer_s16, alarm[10]);
       L35: buffer_write(buf, buffer_s16, alarm[0xb]);
       L37: var v_108 = variable_instance_get_names(id);
+      L37: i_168 = 0;
       L39: buffer_write(buf, buffer_u16, ppdVar12(v_108));
+      L41: i_f8 = 0;
       L41: while( true ) {
-        L41: cmp(dStack_f8, array_length(v_108))
+        L41: cmp(i_f8, array_length(v_108))
         L41: if ((iVar3 == -2) || (-1 < iVar3)) break;
         L42: if (((uStack_fc & 0xffffff) == 2) && (dStack_108 != 0.0)) {
           L42: if ((iVar3 < 0) || (iVar4 = func_0x0001416ba8f0(dStack_108), iVar4 <= iVar3)) {
@@ -45,10 +48,11 @@ LNone: undefined8 * gml_Script_save_CONTROL(undefined8 param_1,undefined8 param_
           L44: if ((-1 < iVar3) && (iVar4 = func_0x0001416ba8f0(dStack_108), iVar3 < iVar4)) {
           L44: if ((uStack_64 & 0xffffff) != 0) goto LAB_1401a8fdb;
         L44: buffer_write(buf, buffer_string, pdVar8);
-        L46: gml_Script__save_type(uStack_78,uStack_90,&uStack_88,2,ppdVar12);
+        L46: _save_type(v_70, v_168);
     L46: } while (cVar2 != '\0');
-  L55: buffer_write(buf, buffer_u8, 79);
-  L57: buffer_save(v_70, 79);
+  L46: } // fim do with
+  L55: buffer_write(buf, buffer_u8, 0);
+  L57: buffer_save(v_70, 0);
   L58: buffer_delete(v_70);
   L58: if (lStack_388 != 0) {
   L58: return puVar1;

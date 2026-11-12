@@ -1,68 +1,117 @@
-LNone: undefined8 * gml_Script_save_game(longlong *param_1,undefined8 param_2,undefined8 *param_3) {
+LNone: save_game();
   L0: FUN_1416ab750(gml_Script_save_game);
-  L136: gml_Script_save_GENERAL(plStack_78,uStack_80,&uStack_b0,0,0);
-  L137: gml_Script_save_CONTROL(plStack_78,uStack_80,&uStack_b0,0,0);
-  L138: gml_Script_save_CHARACTER(plStack_78,uStack_80,&uStack_b0,0,0);
+  L136: save_GENERAL();
+  L137: save_CONTROL();
+  L138: save_CHARACTER();
   L141: var v_90 = buffer_create(8, 1, 1);
   L142: buffer_seek(v_90, 0, 0);
   L146: buffer_write(buf, buffer_u8, oControl.mw);
   L147: buffer_write(buf, buffer_u8, oControl.mh);
   L148: buffer_write(buf, buffer_u8, oControl.planet);
+  L150: i_108 = 0;
   L150: while( true ) {
-    L150: cmp(dStack_108, oControl.mw)
+    L150: cmp(i_108, oControl.mw)
     L150: if ((iVar2 == -2) || (-1 < iVar2)) break;
+    L151: i_178 = 0;
     L151: while( true ) {
-      L151: cmp(dStack_178, oControl.mh)
+      L151: cmp(i_178, oControl.mh)
       L151: if ((iVar2 == -2) || (-1 < iVar2)) break;
-      L152: var v_128 = array_get_2D(map, dStack_108, dStack_178);
+      L152: var v_128 = array_get_2D(map, i_108, i_178);
       L152: buffer_write(buf, buffer_u16, round(v_128));
+  L156: with (oControl_Pause) {
   L156: if (0 < iVar2) {
     L156: do {
+      L159: instance_destroy();
     L159: } while (cVar1 != '\0');
+  L159: } // fim do with
+  L159: with (parControlsTut) {
   L159: if (0 < iVar2) {
     L159: do {
+      L163: instance_destroy();
     L163: } while (cVar1 != '\0');
+  L163: } // fim do with
+  L163: with (oTemp_Back_Leaves) {
   L163: if (0 < iVar2) {
     L163: do {
+      L167: instance_destroy();
     L167: } while (cVar1 != '\0');
+  L167: } // fim do with
+  L167: with (DRAW_GNARCIER) {
   L167: if (0 < iVar2) {
     L167: do {
+      L171: instance_destroy();
     L171: } while (cVar1 != '\0');
+  L171: } // fim do with
+  L171: with (parDoor_Flat) {
   L171: if (0 < iVar2) {
     L171: do {
+      L175: fade = 1;
+      L176: Clicked = 0;
     L176: } while (cVar1 != '\0');
+  L176: } // fim do with
+  L176: with (oAenox_bound) {
   L176: if (0 < iVar2) {
     L176: do {
+      L180: instance_destroy();
     L180: } while (cVar1 != '\0');
+  L180: } // fim do with
+  L180: with (parPhysArray) {
   L180: if (0 < iVar2) {
     L180: do {
       L183: cmp(object_index, 514)
       L183: if (iVar2 != 0) {
+        L184: instance_destroy();
     L184: } while (cVar1 != '\0');
+  L184: } // fim do with
+  L184: with (parFX) {
   L184: if (0 < iVar2) {
     L184: do {
+      L188: instance_destroy();
     L188: } while (cVar1 != '\0');
+  L188: } // fim do with
+  L188: with (oFADE_goto) {
   L188: if (0 < iVar2) {
     L188: do {
+      L192: instance_destroy();
     L192: } while (cVar1 != '\0');
+  L192: } // fim do with
+  L192: with (oFADE) {
   L192: if (0 < iVar2) {
     L192: do {
+      L196: instance_destroy();
     L196: } while (cVar1 != '\0');
+  L196: } // fim do with
+  L196: with (oFade_in) {
   L196: if (0 < iVar2) {
     L196: do {
+      L200: instance_destroy();
     L200: } while (cVar1 != '\0');
+  L200: } // fim do with
+  L200: with (oFlash) {
   L200: if (0 < iVar2) {
     L200: do {
+      L204: instance_destroy();
     L204: } while (cVar1 != '\0');
+  L204: } // fim do with
+  L204: with (oPadlock) {
   L204: if (0 < iVar2) {
     L204: do {
+      L208: instance_destroy();
     L208: } while (cVar1 != '\0');
+  L208: } // fim do with
+  L208: with (oNenmiar_trail) {
   L208: if (0 < iVar2) {
     L208: do {
+      L212: instance_destroy();
     L212: } while (cVar1 != '\0');
+  L212: } // fim do with
+  L212: with (oGatna) {
   L212: if (0 < iVar2) {
     L212: do {
+      L216: instance_destroy();
     L216: } while (cVar1 != '\0');
+  L216: } // fim do with
+  L216: with (dStack_a0) {
   L216: if (0 < iVar2) {
     L216: do {
       L219: cmp(persistent, dStack_a0)
@@ -110,35 +159,43 @@ LNone: undefined8 * gml_Script_save_game(longlong *param_1,undefined8 param_2,un
                   L252: if (iVar2 == 0) {
                     L252: cmp(collide_object, dStack_a0)
                     L252: if (iVar2 == 0) {
-                      L252: cmp(mover, dStack_a0)
+                      L252: i_a0 = 0;
+                      L252: cmp(mover, i_a0)
                       L252: if (iVar2 == 0) {
-                        L252: cmp(do_grav, dStack_a0)
+                        L252: i_a0 = 0;
+                        L252: cmp(do_grav, i_a0)
               L252: test(variable_instance_exists(id, "y1"))
               L252: if (cVar1 != '\0') {
                 L253: test(object_is_ancestor(object_index, 45 /*parEntity*/))
                 L253: if (cVar1 == '\0') {
-                  L253: cmp(physics, dStack_a0)
+                  L253: cmp(physics, i_a0)
                   L253: if (iVar2 == 0) {
-                    L253: cmp(collide_object, dStack_a0)
+                    L253: cmp(collide_object, i_a0)
                     L253: if (iVar2 == 0) {
-                      L253: cmp(mover, dStack_a0)
+                      L253: i_a0 = 0;
+                      L253: cmp(mover, i_a0)
                       L253: if (iVar2 == 0) {
-                        L253: cmp(do_grav, dStack_a0)
+                        L253: i_a0 = 0;
+                        L253: cmp(do_grav, i_a0)
               L253: test(variable_instance_exists(id, "y2"))
               L253: if (cVar1 != '\0') {
                 L254: test(object_is_ancestor(object_index, 45 /*parEntity*/))
                 L254: if (cVar1 == '\0') {
-                  L254: cmp(physics, dStack_a0)
+                  L254: cmp(physics, i_a0)
                   L254: if (iVar2 == 0) {
-                    L254: cmp(collide_object, dStack_a0)
+                    L254: cmp(collide_object, i_a0)
                     L254: if (iVar2 == 0) {
-                      L254: cmp(mover, dStack_a0)
+                      L254: i_a0 = 0;
+                      L254: cmp(mover, i_a0)
                       L254: if (iVar2 == 0) {
-                        L254: cmp(do_grav, dStack_a0)
+                        L254: i_a0 = 0;
+                        L254: cmp(do_grav, i_a0)
               L256: var v_188 = variable_instance_get_names(id);
+              L256: i_1f0 = 0;
               L258: buffer_write(buf, buffer_u16, ppdVar13(v_188));
+              L260: i_168 = 0;
               L260: while( true ) {
-                L260: cmp(dStack_168, array_length(v_188))
+                L260: cmp(i_168, array_length(v_188))
                 L260: if ((iVar2 == -2) || (-1 < iVar2)) break;
                 L261: if (((uStack_17c & 0xffffff) == 2) && (dStack_188 != 0.0)) {
                   L261: if ((iVar2 < 0) || (iVar3 = func_0x0001416ba8f0(dStack_188), iVar3 <= iVar2)) {
@@ -147,10 +204,12 @@ LNone: undefined8 * gml_Script_save_game(longlong *param_1,undefined8 param_2,un
                   L263: if ((-1 < iVar2) && (iVar3 = func_0x0001416ba8f0(dStack_188), iVar2 < iVar3)) {
                   L263: if ((uStack_84 & 0xffffff) != 0) goto LAB_1400c1cbb;
                 L263: buffer_write(buf, buffer_string, pdVar8);
-                L283: gml_Script__save_type(plStack_78,uStack_80,&uStack_b0,2,ppdVar13);
+                L283: _save_type(v_90, v_1f0);
     L283: } while (cVar1 != '\0');
-  L356: buffer_write(buf, buffer_u8, dStack_a0);
-  L358: buffer_save(v_90, dStack_a0);
+  L283: } // fim do with
+  L356: i_a0 = 0;
+  L356: buffer_write(buf, buffer_u8, i_a0);
+  L358: buffer_save(v_90, i_a0);
   L359: buffer_delete(v_90);
   L359: if (lStack_400 != 0) {
   L359: if (lStack_420 != 0) {

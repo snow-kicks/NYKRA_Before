@@ -31,14 +31,23 @@ BUFFER_TYPES = {1: "u8", 2: "s8", 3: "u16", 4: "s16", 5: "u32", 6: "s32", 7: "f1
 # Rotinas do runtime YYC identificadas pelo uso.
 CALL = "FUN_1416ab210"          # (self, other, &result, argc, id_da_funcao, args)
 BUFFER_WRITE = "FUN_1416fbbe0"  # (buffer, tipo, valor)
-GETTERS = r"FUN_1416(?:cfc30|cfeb0|cea80|d0010)"   # (instancia, var, indice, &destino, ...)
-SETTERS = r"FUN_1416d0(?:720|790)"                 # (instancia, var, indice, &origem)
+GETTERS = r"FUN_1416(?:cfc30|cfeb0|cea80|d0010|ab670)"   # (instancia, var, indice, &destino, ...)
+SETTERS = r"(?:FUN_1416d0720|FUN_1416d0790|FUN_1416cf840|FUN_1416cfae0|func_0x0001416cf780)"                 # (instancia, var, indice, &origem)
 LOAD_CONST = "FUN_140002730"    # (&destino, endereco_da_constante)
 LOAD_STRING = "FUN_1416ab000"   # (&destino, endereco_de_um_char*)
 COPY = "FUN_1400019a0"          # (destino, origem)
 COMPARE = "FUN_1416d9df0"       # (a, b, epsilon, ...)
 TO_REAL = "FUN_1416940c0"
 TO_BOOL = "FUN_1416927d0"
+MUL_INT = "FUN_140001a50"       # (&destino, &a, inteiro): destino = a * inteiro
+ARRAY2D_SET = "FUN_1416cd560"   # (array, i, j, &valor)
+WITH_BEGIN = "FUN_1416ab810"    # (&iterador, &self, &other, &alvo)
+WITH_END = "FUN_1416ab620"
+INSTANCE_DESTROY = "FUN_1416f8210"
+INSTANCE_EXISTS = "FUN_1416f8280"   # (self, other, objeto)
+DIV_CONST = "FUN_140004520"     # (&destino, origem, literal double): destino = origem / literal (inferido)
+SUB_ASSIGN = "FUN_140003e00"    # (&a, &b): a -= b (inferido)
+COPY_RV = "FUN_14005b430"       # (&destino, &origem)
 NO_INDEX = "0x80000000"
 
 
@@ -165,6 +174,7 @@ def main():
 
     expr = {}   # variavel/slot do Ghidra -> expressao
     ptrs = {}   # offset de pilha de um ponteiro de argumento -> slot apontado
+    refs = {}   # ponteiro para uma variavel de self obtido para escrita direta
     alias = {}  # variavel que guarda o endereco de um vetor de argumentos -> offset base
 
     def fmt_const(value):
@@ -217,6 +227,44 @@ def main():
         if m:
             expr[m.group(1)] = fmt_const(struct.unpack("<d", struct.pack("<Q", int(m.group(2), 16)))[0])
             continue
+        m = re.match(r"(\w+Stack_\w+) = 0;$", s)
+        if m:
+            expr[m.group(1)] = "0"
+            continue
+        m = re.match(r"(\w+Stack_(\w+)) = 0\.0;$", s)
+        if m:                                   # contador de laco (for i = 0; ...)
+            expr[m.group(1)] = f"i_{m.group(2)}"
+            if line:                            # fora do prologo da funcao
+                out.append(f"{tag}i_{m.group(2)} = 0;")
+            continue
+        m = re.match(r"(\w+) = \(\w+ \*\)\(\*\*\(code \*\*\)\(\*\w+ \+ 0x10\)\)\(\w+,(\w+)\);$", s)
+        if m:
+            expr[m.group(1)] = m.group(2)
+            refs[m.group(1)] = m.group(2)
+            continue
+        m = re.match(r"\*(\w+) = (0x[0-9a-f]+|\d+);$", s)
+        if m and m.group(1) in refs:
+            raw_v = int(m.group(2), 0)
+            value = struct.unpack("<d", struct.pack("<Q", raw_v))[0] if raw_v > 0xFFFFFFFF else float(raw_v)
+            out.append(f"{tag}{refs[m.group(1)]} = {fmt_const(value)};")
+            continue
+        m = re.match(DIV_CONST + r"\(&(\w+),&?(\w+),(0x[0-9a-f]+)\);$", s)
+        if m:
+            lit = struct.unpack("<d", struct.pack("<Q", int(m.group(3), 16)))[0]
+            expr[m.group(1)] = f"({E(m.group(2))} / {fmt_const(lit)})"
+            continue
+        m = re.match(SUB_ASSIGN + r"\(&(\w+),&?(\w+)\);$", s)
+        if m:
+            expr[m.group(1)] = f"({E(m.group(1))} - {E(m.group(2))})"
+            continue
+        m = re.match(COPY_RV + r"\(&(\w+),&?(\w+)\);$", s)
+        if m:
+            expr[m.group(1)] = E(m.group(2))
+            continue
+        m = re.match(MUL_INT + r"\(&(\w+),&?(\w+),(0x[0-9a-f]+|\d+)\);$", s)
+        if m:
+            expr[m.group(1)] = f"({E(m.group(2))} * {int(m.group(3), 0)})"
+            continue
         m = re.match(r"(p+\w*Stack_[0-9a-f]+) = &(\w+);$", s)
         if m:
             target = m.group(2)
@@ -260,7 +308,7 @@ def main():
             expr[m.group(1)] = E(m.group(2))
             continue
         m = re.search(GETTERS + r"\(", s)
-        if m:
+        if m and len(call_args(s, m.group(0)[:-1])) >= 4:
             a = call_args(s, m.group(0)[:-1])
             idx = "" if a[2] == NO_INDEX else f"[{E(a[2])}]"
             owner = inst(a[0])
@@ -269,6 +317,9 @@ def main():
 
         # --- instrucoes que aparecem na saida ---
         m = re.search(SETTERS + r"\(", s)
+        if m and len(call_args(s, m.group(0)[:-1])) < 4:
+            out.append(f"{tag}{s}")
+            continue
         if m:
             a = call_args(s, m.group(0)[:-1])
             idx = "" if a[2] == NO_INDEX else f"[{E(a[2])}]"
@@ -304,6 +355,36 @@ def main():
                     expr[slot] = value
             else:
                 out.append(f"{tag}{E(dst)} = {value};")
+        elif ARRAY2D_SET + "(" in s:
+            a = call_args(s, ARRAY2D_SET)
+            out.append(f"{tag}{E(a[0])}[{E(a[1])}, {E(a[2])}] = {E(a[3])};")
+        elif WITH_BEGIN + "(" in s:
+            a = call_args(s, WITH_BEGIN)
+            target = E(a[3])
+            if re.fullmatch(r"\d+", target) and int(target) in objects:
+                target = objects[int(target)]
+            out.append(f"{tag}with ({target}) {{")
+        elif s.startswith(WITH_END + "("):
+            out.append(f"{tag}}} // fim do with")
+        elif INSTANCE_EXISTS + "(" in s:
+            out.append(f"{tag}test(instance_exists({inst(call_args(s, INSTANCE_EXISTS)[2])}))")
+        elif s.startswith(INSTANCE_DESTROY + "("):
+            out.append(f"{tag}instance_destroy();")
+        elif re.search(r"\bgml_Script_\w+\(", s):
+            fn = re.search(r"\b(gml_Script_\w+)\(", s).group(1)
+            a = call_args(s, fn)
+            argc = int(a[3], 0) if len(a) > 3 and re.fullmatch(r"0x[0-9a-f]+|\d+", a[3]) else 0
+            base = None
+            if len(a) > 4:
+                base = stack_off(a[4]) if stack_off(a[4]) is not None else alias.get(a[4].lstrip("&"))
+            args = [E(ptrs[base - 8 * k]) if base is not None and (base - 8 * k) in ptrs else "?"
+                    for k in range(argc)]
+            text = f"{fn[len('gml_Script_'):]}({', '.join(args)})"
+            m = re.match(r"(\w+) = ", s)
+            if m:
+                expr[m.group(1)] = text
+            else:
+                out.append(f"{tag}{text};")
         elif COMPARE + "(" in s:
             a = call_args(s, COMPARE)
             out.append(f"{tag}cmp({E(a[0])}, {E(a[1])})")

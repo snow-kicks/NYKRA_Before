@@ -1,7 +1,8 @@
-LNone: undefined8 * gml_Script_save_CHARACTER(longlong *param_1,undefined8 param_2,undefined8 *param_3) {
+LNone: save_CHARACTER();
   L0: FUN_1416ab750(gml_Script_save_CHARACTER);
   L13: var v_88 = buffer_create(8, 1, 1);
   L14: ppdVar12(v_88, 0, 0);
+  L14: with (dStack_118) {
   L14: if (0 < iVar2) {
     L14: do {
       L18: var v_148 = object_get_name(object_index);
@@ -41,35 +42,43 @@ LNone: undefined8 * gml_Script_save_CHARACTER(longlong *param_1,undefined8 param
           L48: if (iVar2 == 0) {
             L48: cmp(collide_object, dStack_118)
             L48: if (iVar2 == 0) {
-              L48: cmp(mover, dStack_118)
+              L48: i_118 = 0;
+              L48: cmp(mover, i_118)
               L48: if (iVar2 == 0) {
-                L48: cmp(do_grav, dStack_118)
+                L48: i_118 = 0;
+                L48: cmp(do_grav, i_118)
       L48: test(variable_instance_exists(id, "y1"))
       L48: if (cVar1 != '\0') {
         L49: test(object_is_ancestor(object_index, 45 /*parEntity*/))
         L49: if (cVar1 == '\0') {
-          L49: cmp(physics, dStack_118)
+          L49: cmp(physics, i_118)
           L49: if (iVar2 == 0) {
-            L49: cmp(collide_object, dStack_118)
+            L49: cmp(collide_object, i_118)
             L49: if (iVar2 == 0) {
-              L49: cmp(mover, dStack_118)
+              L49: i_118 = 0;
+              L49: cmp(mover, i_118)
               L49: if (iVar2 == 0) {
-                L49: cmp(do_grav, dStack_118)
+                L49: i_118 = 0;
+                L49: cmp(do_grav, i_118)
       L49: test(variable_instance_exists(id, "y2"))
       L49: if (cVar1 != '\0') {
         L50: test(object_is_ancestor(object_index, 45 /*parEntity*/))
         L50: if (cVar1 == '\0') {
-          L50: cmp(physics, dStack_118)
+          L50: cmp(physics, i_118)
           L50: if (iVar2 == 0) {
-            L50: cmp(collide_object, dStack_118)
+            L50: cmp(collide_object, i_118)
             L50: if (iVar2 == 0) {
-              L50: cmp(mover, dStack_118)
+              L50: i_118 = 0;
+              L50: cmp(mover, i_118)
               L50: if (iVar2 == 0) {
-                L50: cmp(do_grav, dStack_118)
+                L50: i_118 = 0;
+                L50: cmp(do_grav, i_118)
       L52: var v_168 = variable_instance_get_names(id);
+      L52: i_1a8 = 0;
       L54: buffer_write(buf, buffer_u16, ppdVar12(v_168));
+      L56: i_178 = 0;
       L56: while( true ) {
-        L56: cmp(dStack_178, array_length(v_168))
+        L56: cmp(i_178, array_length(v_168))
         L56: if ((iVar2 == -2) || (-1 < iVar2)) break;
         L57: if (((uStack_15c & 0xffffff) == 2) && (dStack_168 != 0.0)) {
           L57: if ((iVar2 < 0) || (iVar3 = func_0x0001416ba8f0(dStack_168), iVar3 <= iVar2)) {
@@ -78,17 +87,20 @@ LNone: undefined8 * gml_Script_save_CHARACTER(longlong *param_1,undefined8 param
           L59: if ((-1 < iVar2) && (iVar3 = func_0x0001416ba8f0(dStack_168), iVar2 < iVar3)) {
           L59: if ((uStack_7c & 0xffffff) != 0) goto LAB_1401a2eeb;
         L59: buffer_write(buf, buffer_string, pdVar8);
-        L61: gml_Script__save_type(plStack_78,uStack_90,&uStack_a0,2,ppdVar12);
+        L61: _save_type(v_88, v_1a8);
       L61: test(ds_exists(books, 2))
       L61: if (cVar1 == '\0') {
         L66: books = ds_list_create();
-      L67: gml_Script__save_ds_list(plStack_78,uStack_90,&uStack_a0,2,ppdVar12);
+      L67: _save_ds_list(v_88, books);
       L67: test(ds_exists(PLANET_FOUND, 2))
       L67: if (cVar1 == '\0') {
         L69: PLANET_FOUND = ds_list_create();
-      L70: gml_Script__save_ds_list(plStack_78,uStack_90,&uStack_a0,2,ppdVar12);
+      L70: _save_ds_list(v_88, PLANET_FOUND);
     L70: } while (cVar1 != '\0');
+  L70: } // fim do with
+  L70: test(instance_exists(oEo))
   L70: if (cVar1 != '\0') {
+    L75: with (dStack_c0) {
     L75: if (0 < iVar2) {
       L75: do {
         L77: var v_148 = object_get_name(object_index);
@@ -128,35 +140,43 @@ LNone: undefined8 * gml_Script_save_CHARACTER(longlong *param_1,undefined8 param
             L107: if (iVar2 == 0) {
               L107: cmp(collide_object, dStack_c0)
               L107: if (iVar2 == 0) {
-                L107: cmp(mover, dStack_c0)
+                L107: i_c0 = 0;
+                L107: cmp(mover, i_c0)
                 L107: if (iVar2 == 0) {
-                  L107: cmp(do_grav, dStack_c0)
+                  L107: i_c0 = 0;
+                  L107: cmp(do_grav, i_c0)
         L107: test(variable_instance_exists(id, "y1"))
         L107: if (cVar1 != '\0') {
           L108: test(object_is_ancestor(object_index, 45 /*parEntity*/))
           L108: if (cVar1 == '\0') {
-            L108: cmp(physics, dStack_c0)
+            L108: cmp(physics, i_c0)
             L108: if (iVar2 == 0) {
-              L108: cmp(collide_object, dStack_c0)
+              L108: cmp(collide_object, i_c0)
               L108: if (iVar2 == 0) {
-                L108: cmp(mover, dStack_c0)
+                L108: i_c0 = 0;
+                L108: cmp(mover, i_c0)
                 L108: if (iVar2 == 0) {
-                  L108: cmp(do_grav, dStack_c0)
+                  L108: i_c0 = 0;
+                  L108: cmp(do_grav, i_c0)
         L108: test(variable_instance_exists(id, "y2"))
         L108: if (cVar1 != '\0') {
           L109: test(object_is_ancestor(object_index, 45 /*parEntity*/))
           L109: if (cVar1 == '\0') {
-            L109: cmp(physics, dStack_c0)
+            L109: cmp(physics, i_c0)
             L109: if (iVar2 == 0) {
-              L109: cmp(collide_object, dStack_c0)
+              L109: cmp(collide_object, i_c0)
               L109: if (iVar2 == 0) {
-                L109: cmp(mover, dStack_c0)
+                L109: i_c0 = 0;
+                L109: cmp(mover, i_c0)
                 L109: if (iVar2 == 0) {
-                  L109: cmp(do_grav, dStack_c0)
+                  L109: i_c0 = 0;
+                  L109: cmp(do_grav, i_c0)
         L111: var v_168 = variable_instance_get_names(id);
+        L111: i_1a8 = 0;
         L113: buffer_write(buf, buffer_u16, ppdVar12(v_168));
+        L115: i_178 = 0;
         L115: while( true ) {
-          L115: cmp(dStack_178, ppdVar12(v_168))
+          L115: cmp(i_178, ppdVar12(v_168))
           L115: if ((iVar2 == -2) || (-1 < iVar2)) break;
           L116: if (((uStack_15c & 0xffffff) == 2) && (dStack_168 != 0.0)) {
             L116: if ((iVar2 < 0) || (iVar3 = func_0x0001416ba8f0(dStack_168), iVar3 <= iVar2)) {
@@ -165,11 +185,13 @@ LNone: undefined8 * gml_Script_save_CHARACTER(longlong *param_1,undefined8 param
             L118: if ((-1 < iVar2) && (iVar3 = func_0x0001416ba8f0(dStack_168), iVar2 < iVar3)) {
             L118: if ((uStack_7c & 0xffffff) != 0) goto LAB_1401a517b;
           L118: buffer_write(buf, buffer_string, pdVar8);
-          L120: gml_Script__save_type(plStack_78,uStack_90,&uStack_a0,2,ppdVar12);
+          L120: _save_type(v_88, v_1a8);
       L120: } while (cVar1 != '\0');
+    L120: } // fim do with
     L120: if (lStack_108 != 0) {
-  L125: buffer_write(buf, buffer_u8, dStack_118);
-  L127: buffer_save(v_88, dStack_118);
+  L125: i_118 = 0;
+  L125: buffer_write(buf, buffer_u8, i_118);
+  L127: buffer_save(v_88, i_118);
   L128: buffer_delete(v_88);
   L128: if (lStack_3c0 != 0) {
   L128: return puStack_3a8;

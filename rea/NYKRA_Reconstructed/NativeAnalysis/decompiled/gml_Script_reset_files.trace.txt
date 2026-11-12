@@ -1,4 +1,4 @@
-LNone: undefined8 * gml_Script_reset_files(longlong *param_1,undefined8 param_2,undefined8 *param_3) {
+LNone: reset_files();
   L0: FUN_1416ab750(gml_Script_reset_files);
   L2: ds_list_clear(file);
   L3: var v_128 = file_find_first(uStack_68, 0);

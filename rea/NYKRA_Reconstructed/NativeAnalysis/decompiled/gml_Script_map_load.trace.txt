@@ -1,4 +1,4 @@
-LNone: undefined8 * gml_Script_map_load(longlong *param_1,undefined8 param_2,undefined8 *param_3,int param_4, undefined8 *param_5) {
+LNone: map_load();
   L0: FUN_1416ab750(gml_Script_map_load);
   L217: draw_texture_flush();
   L218: instance_activate_all();
@@ -6,106 +6,154 @@ LNone: undefined8 * gml_Script_map_load(longlong *param_1,undefined8 param_2,und
   L220: file_current = puVar13;
   L221: if (param_4 < 2) {
   L221: CURRENTROOM = puVar13;
+  L225: keyboard_string = file_current;
+  L225: test(instance_exists(oCamera))
   L225: if (cVar1 != '\0') {
+    L227: test(instance_exists(oPlayer))
     L227: if (cVar1 != '\0') {
-      L231: oCamera.xx = uStack_440;
-      L232: oCamera.yy = uStack_430;
-      L233: camera_set_view_pos(cam, uStack_188, uStack_188);
-      L234: oCamera.mv = uStack_3c8;
-      L235: oCamera.mh = uStack_578;
+      L229: oCamera.x = oPlayer.x;
+      L230: oCamera.y = oPlayer.y;
+      L231: oCamera.xx = oPlayer.x;
+      L232: oCamera.yy = oPlayer.y;
+      L233: var v_268 = (oCamera.x - (camera_get_view_width(cam) / 2));
+      L233: var v_258 = (oCamera.y - (camera_get_view_height(cam) / 2));
+      L233: camera_set_view_pos(cam, v_268, v_258);
+      L234: oCamera.mv = 0;
+      L235: oCamera.mh = 0;
+      L236: oCamera.alarm[0] = 1;
+      L237: oPlayer.depth = 0;
+      L237: with (oPlayer) {
       L237: if (0 < iVar2) {
         L237: do {
+          L238: depth = 0;
         L238: } while (cVar1 != '\0');
+      L238: } // fim do with
       L238: if (lStack_178 != 0) {
   L242: if (param_4 < 1) {
   L242: var v_f8 = buffer_load(puVar13);
   L243: map_n = buffer_read(v_f8, 1);
   L244: mw = buffer_read(v_f8, 1);
   L245: mh = buffer_read(v_f8, 1);
-  L247: var v_328 = mean(uStack_440, uStack_188);
-  L248: var v_318 = mean(uStack_430, uStack_188);
-  L249: var v_578 = mean(oCamera.xx, uStack_188);
+  L247: var v_288 = (mw * 8);
+  L247: var v_328 = mean(oCamera.x, v_288);
+  L247: oCamera.x = v_328;
+  L248: var v_288 = (mh * 8);
+  L248: var v_318 = mean(oCamera.y, v_288);
+  L248: oCamera.y = v_318;
+  L249: var v_288 = (mw * 8);
+  L249: var v_578 = mean(oCamera.xx, v_288);
   L249: oCamera.xx = v_578;
-  L250: var v_468 = mean(oCamera.yy, uStack_188);
+  L250: var v_288 = (mh * 8);
+  L250: var v_468 = mean(oCamera.yy, v_288);
   L250: oCamera.yy = v_468;
-  L251: camera_set_view_pos(cam, uStack_188, uStack_188);
-  L252: oCamera.mv = uStack_818;
-  L253: oCamera.mh = uStack_808;
+  L251: var v_268 = (oCamera.x - (camera_get_view_width(cam) / 2));
+  L251: var v_258 = (oCamera.y - (camera_get_view_height(cam) / 2));
+  L251: camera_set_view_pos(cam, v_268, v_258);
+  L252: oCamera.mv = 0;
+  L253: oCamera.mh = 0;
+  L254: oCamera.alarm[0] = 1;
   L257: planet = buffer_read(v_f8, 1);
   L258: uStack_7d8 = planet;
   L259: horizon = buffer_read(v_f8, 1);
   L260: var v_560 = buffer_read(v_f8, 1);
   L261: var v_560 = buffer_read(v_f8, 1);
   L262: var v_560 = buffer_read(v_f8, 1);
+  L266: i_d8 = 0;
   L266: while( true ) {
-    L266: cmp(dStack_d8, mw)
+    L266: cmp(i_d8, mw)
     L266: if ((iVar2 == -2) || (0 < iVar2)) break;
+    L267: i_2c8 = 0;
     L267: while( true ) {
-      L267: cmp(dStack_2c8, mh)
+      L267: cmp(i_2c8, mh)
       L267: if ((iVar2 == -2) || (0 < iVar2)) break;
         L269: if ((uStack_cc & 0xffffff) != 0) goto LAB_14004e10f;
-  L275: gml_Script_clear_objects(plStack_78,uStack_90,&uStack_88,0,0);
+      L269: puStack_308[i_d8, (double)uVar3] = 0;
+  L273: i_4f8 = 0;
+  L275: clear_objects();
+  L275: with (oAenox_bound) {
   L275: if (0 < iVar2) {
     L275: do {
+      L276: instance_destroy();
     L276: } while (cVar1 != '\0');
+  L276: } // fim do with
   L276: if (0 < iVar2) {
+    L278: with (oPlayer) {
     L278: if (0 < iVar2) {
       L278: do {
+        L280: UI_SMELT = 0;
+        L281: UI_CRAFT = 0;
       L281: } while (cVar1 != '\0');
+    L281: } // fim do with
     L281: if (lStack_2a8 != 0) {
+  L289: i_1b8 = 0;
   L289: while( true ) {
-    L289: cmp(dStack_1b8, mw)
+    L289: cmp(i_1b8, mw)
     L289: if ((iVar2 == -2) || (-1 < iVar2)) break;
+    L290: i_1a8 = 0;
     L290: while( true ) {
-      L290: cmp(dStack_1a8, mh)
+      L290: cmp(i_1a8, mh)
       L290: if ((iVar2 == -2) || (-1 < iVar2)) break;
       L291: var v_4f8 = buffer_read(v_f8, 3);
-      L292: cmp(v_4f8, 67)
+      L292: cmp(v_4f8, 0)
       L292: if (iVar2 == 0) {
           L300: if ((uStack_1ac & 0xffffff) != 0) goto LAB_14004e83a;
+        L300: puStack_308[i_1b8, (double)uVar3] = 0;
           L293: if ((uStack_1ac & 0xffffff) != 0) goto LAB_14004e7c0;
+        L293: puStack_308[i_1b8, (double)uVar3] = v_4f8;
         L293: cmp(array_get_2D(map_id, v_4f8, 4), -4)
         L293: if (iVar2 != 0) {
+          L293: var v_238 = (i_1b8 * 16);
+          L293: var v_228 = (i_1a8 * 16);
           L293: var v_218 = array_get_2D(map_id, v_4f8, 4);
-          L293: cmp(instance_position(-4, -4, v_218), -4)
+          L293: cmp(instance_position(v_238, v_228, v_218), -4)
           L293: if (iVar2 == 0) {
+            L295: var v_208 = (i_1b8 * 16);
+            L295: var v_1f8 = (i_1a8 * 16);
             L295: if (((*(uint *)((longlong)plVar11 + 0xc) & 0xffffff) == 2) && (*plVar11 != 0)) {
               L295: if (iVar2 < 6) {
             L295: if (((*(uint *)((longlong)plVar11 + 0xc) & 0xffffff) == 2) && (*plVar11 != 0)) {
               L295: if (iVar2 < 5) {
-            L295: instance_create_depth(-4, -4, plVar11, plVar11);
+            L295: instance_create_depth(v_208, v_1f8, plVar11, plVar11);
+  L305: i_d8 = 0;
   L305: while( true ) {
-    L305: cmp(dStack_d8, array_length(_layer))
+    L305: cmp(i_d8, array_length(_layer))
     L305: if ((iVar2 == -2) || (-1 < iVar2)) break;
     L306: var v_420 = layer_get_id(_layer);
     L307: var v_4e8 = layer_tilemap_get_id(v_420);
     L308: tilemap_clear(v_4e8, 0);
+    L309: i_1b8 = 0;
     L309: while( true ) {
-      L309: cmp(dStack_1b8, mw)
+      L309: cmp(i_1b8, mw)
       L309: if ((iVar2 == -2) || (-1 < iVar2)) break;
+      L310: i_1a8 = 0;
       L310: while( true ) {
-        L310: cmp(dStack_1a8, mh)
+        L310: cmp(i_1a8, mh)
         L310: if ((iVar2 == -2) || (-1 < iVar2)) break;
         L311: var v_4f8 = buffer_read(v_f8, 3);
-        L311: cmp(v_4f8, -4)
+        L311: cmp(v_4f8, 0)
         L311: if (iVar2 != 0) {
-          L312: tilemap_set(v_4e8, v_4f8, dStack_1b8, dStack_1a8);
+          L312: tilemap_set(v_4e8, v_4f8, i_1b8, i_1a8);
   L312: test(ds_exists(oControl.asset_list[0], 2))
   L312: if (cVar1 != '\0') {
+    L319: i_198 = 0;
     L319: while( true ) {
-      L319: cmp(dStack_198, ds_list_size(oControl.asset_list[0]))
+      L319: cmp(i_198, ds_list_size(oControl.asset_list[0]))
       L319: if ((iVar2 == -2) || (-1 < iVar2)) break;
-      L320: var v_268 = ds_list_find_value(oControl.asset_list[0], dStack_198);
+      L320: var v_268 = ds_list_find_value(oControl.asset_list[0], i_198);
       L320: layer_sprite_destroy(v_268);
     L322: ds_list_destroy(oControl.asset_list[0]);
   L324: oControl.asset_list[0] = -1;
   L325: var v_3f8 = ds_list_create();
   L325: oControl.asset_list[0] = v_3f8;
   L326: var v_420 = layer_get_id(oControl.asset_layer[0]);
+  L326: i_2f8 = 0;
+  L326: i_2e8 = 0;
+  L326: i_2d8 = 0;
   L327: var v_4e8 = layer_tilemap_get_id(v_420);
   L328: var v_398 = buffer_read(v_f8, 3);
+  L329: i_d8 = 0;
   L329: while( true ) {
-    L329: cmp(dStack_d8, v_398)
+    L329: cmp(i_d8, v_398)
     L329: if ((iVar2 == -2) || (-1 < iVar2)) break;
     L330: var v_2f8 = buffer_read(v_f8, 3);
     L331: var v_2e8 = buffer_read(v_f8, 3);
@@ -115,20 +163,25 @@ LNone: undefined8 * gml_Script_map_load(longlong *param_1,undefined8 param_2,und
     L333: ds_list_add(oControl.asset_list[0], v_238);
   L333: test(ds_exists(oControl.asset_list[1], 2))
   L333: if (cVar1 != '\0') {
+    L337: i_198 = 0;
     L337: while( true ) {
-      L337: cmp(dStack_198, ds_list_size(oControl.asset_list[1]))
+      L337: cmp(i_198, ds_list_size(oControl.asset_list[1]))
       L337: if ((iVar2 == -2) || (-1 < iVar2)) break;
-      L338: var v_268 = ds_list_find_value(oControl.asset_list[1], dStack_198);
+      L338: var v_268 = ds_list_find_value(oControl.asset_list[1], i_198);
       L338: layer_sprite_destroy(v_268);
     L340: ds_list_destroy(oControl.asset_list[1]);
   L342: oControl.asset_list[1] = -1;
   L343: var v_3e8 = ds_list_create();
   L343: oControl.asset_list[1] = v_3e8;
   L344: var v_420 = layer_get_id(oControl.asset_layer[1]);
+  L344: i_2f8 = 0;
+  L344: i_2e8 = 0;
+  L344: i_2d8 = 0;
   L345: var v_4e8 = layer_tilemap_get_id(v_420);
   L346: var v_398 = buffer_read(v_f8, 3);
+  L347: i_d8 = 0;
   L347: while( true ) {
-    L347: cmp(dStack_d8, v_398)
+    L347: cmp(i_d8, v_398)
     L347: if ((iVar2 == -2) || (-1 < iVar2)) break;
     L348: var v_2f8 = buffer_read(v_f8, 3);
     L349: var v_2e8 = buffer_read(v_f8, 3);
@@ -136,21 +189,33 @@ LNone: undefined8 * gml_Script_map_load(longlong *param_1,undefined8 param_2,und
     L351: var v_258 = buffer_read(v_2d8);
     L351: var v_238 = layer_sprite_create(v_420, v_2f8, v_2e8, v_258);
     L351: ds_list_add(oControl.asset_list[1], v_238);
+  L354: i_2f8 = 0;
+  L354: i_2e8 = 0;
+  L354: i_2d8 = 0;
+  L354: i_388 = 0;
+  L355: i_198 = 0;
   L355: while( true ) {
-    L355: cmp(dStack_198, ds_list_size(puStack_300))
+    L355: cmp(i_198, ds_list_size(puStack_300))
     L355: if ((iVar2 == -2) || (-1 < iVar2)) break;
+    L355: test(instance_exists(ds_list_find_value(puStack_300, i_198)))
     L355: if (cVar1 != '\0') {
-      L356: cmp(ds_list_find_value(puStack_300, dStack_198).uVar4, 1)
+      L356: cmp(ds_list_find_value(puStack_300, i_198).uVar4, 1)
       L356: if (iVar2 != 0) {
-        L358: var v_228 = ds_list_find_value(puStack_300, dStack_198);
+        L358: var v_228 = ds_list_find_value(puStack_300, i_198);
+        L358: instance_destroy();
+  L358: with (oAenox_bound) {
   L358: if (0 < iVar2) {
     L358: do {
+      L362: instance_destroy();
     L362: } while (cVar1 != '\0');
+  L362: } // fim do with
   L363: ds_list_destroy(puStack_300);
   L365: puStack_300 = ds_list_create();
+  L366: collision_list = 0;
   L369: var v_398 = ppdVar17(v_f8, 3);
+  L376: i_d8 = 0;
   L376: while( true ) {
-    L376: cmp(dStack_d8, v_398)
+    L376: cmp(i_d8, v_398)
     L376: if ((iVar2 == -2) || (-1 < iVar2)) goto LAB_140055f24;
     L376: cmp(ppdVar17(v_f8), buffer_get_size(3))
     L376: if (-1 < iVar2) break;
@@ -287,8 +352,7 @@ LNone: undefined8 * gml_Script_map_load(longlong *param_1,undefined8 param_2,und
                   L437: v_e8.book_text = v_3a8;
                   L429: var v_378 = buffer_read(v_f8, 11);
                   L429: var v_3a8 = buffer_read(v_f8, 1);
-                  L430: uVar5 = gml_Script_real_string(plStack_78,uStack_90,&uStack_88,1,ppdVar17);
-                  L430: var v_728 = buffer_read(v_f8, 1);
+                  L430: var v_728 = real_string(v_378);
                   L430: v_e8.text = v_728;
                   L431: v_e8.page = v_3a8;
               L414: var v_378 = buffer_read(v_f8, 1);
@@ -302,43 +366,55 @@ LNone: undefined8 * gml_Script_map_load(longlong *param_1,undefined8 param_2,und
           L396: var v_378 = buffer_read(v_f8, 3);
           L396: var v_3a8 = buffer_read(v_f8, 3);
           L397: v_e8.locked = v_378;
+          L398: i_488 = 0;
+          L398: i_478 = 0;
           L399: ds_list_clear(v_e8.INV);
           L400: ppdVar17(v_e8.INV_N);
-          L401: cmp(dStack_2c8, v_3a8)
+          L401: i_2c8 = 0;
+          L401: cmp(i_2c8, v_3a8)
             L402: var v_488 = buffer_read(v_f8, 3);
             L403: var v_478 = buffer_read(v_f8, 3);
-            L404: gml_Script_inv_add_obj(plStack_78,uStack_90,&uStack_88,3,ppdVar17);
+            L404: inv_add_obj(v_488, v_478, v_e8);
   L378: if (0 < iVar2) {
+    L477: with (oPlayer) {
     L477: if (0 < iVar2) {
       L477: do {
-        L478: cmp(path_side, 64)
+        L478: cmp(path_side, 0)
         L478: if (iVar2 != 0) {
           L478: cmp(has_path, -1)
           L478: if (iVar2 != 0) {
+            L480: control = 0;
+            L480: with (PATH) {
             L480: if (0 < iVar2) {
               L480: do {
                 L481: cmp(n, oPlayer.has_path)
                 L481: if (iVar2 == 0) {
-                  L484: gml_Script_obj_setpos(plStack_78,uStack_90,&uStack_88,3,ppdVar17);
+                  L484: obj_setpos(64 /*oPlayer*/, x, x);
               L485: } while (cVar1 != '\0');
+            L485: } // fim do with
+            L488: has_path = -1;
+            L490: FUN_1416cfae0(plStack_78,alarm,0);
             L490: if (lStack_3b8 != 0) {
       L490: } while (cVar1 != '\0');
+    L490: } // fim do with
     L490: if (0 < iVar2) {
-      L494: gml_Script_obj_setpos(plStack_78,uStack_90,&uStack_88,3,ppdVar17);
+      L494: obj_setpos(65 /*oEo*/, oPlayer.x, oPlayer.y);
     L494: if (lStack_338 != 0) {
   L497: buffer_delete(v_f8);
   L497: test(oControl.START_GAME)
   L497: if (cVar1 != '\0') {
-    L499: gml_Script_load_game(plStack_78,uStack_90,&uStack_88,0,0);
-  L503: gml_Script_reset_files(plStack_78,uStack_90,&uStack_88,0,0);
+    L499: load_game();
+  L503: reset_files();
+  L503: with (ppdVar17(10, 10, -1011, 136 /*oFade_in*/)) {
   L503: if (0 < iVar2) {
     L503: do {
       L505: colour = oControl.FADE_COLOUR;
     L505: } while (cVar1 != '\0');
-  L506: gml_Script__SET_SCENE(plStack_78,uStack_90,&uStack_88);
+  L505: } // fim do with
+  L506: _SET_SCENE();
   L506: if (0 < iVar2) {
     L508: if (0 < iVar2) {
-      L510: gml_Script_obj_setpos(plStack_78,uStack_90,&uStack_88,3,ppdVar17);
+      L510: obj_setpos(65 /*oEo*/, oPlayer.x, oPlayer.y);
     L512: ppdVar17(oEo.ui_pos_mem);
     L513: oEo.can_see = 1;
     L514: oEo.in_radius = 1;

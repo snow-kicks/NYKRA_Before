@@ -26,12 +26,13 @@ LNone: undefined8 * gml_Script__save_type_rec (undefined8 param_1,undefined8 par
         L48: buffer_write(buf, buffer_u8, 3);
         L49: if (iStack_bc < 1) {
         L49: buffer_write(buf, buffer_u16, array_length(puVar10));
+        L50: i_a8 = 0;
         L50: while( true ) {
-          L50: cmp(dStack_a8, array_length(puVar10))
+          L50: cmp(i_a8, array_length(puVar10))
           L50: if ((iVar3 == -2) || (-1 < iVar3)) break;
           L51: var v_120 = array_length(puVar10);
           L52: if (0 < iStack_bc) {
-          L52: gml_Script__save_type_rec2(param_1,uStack_88,&uStack_80,2,&puStack_148);
+          L52: _save_type_rec2(puVar10, v_120);
       L58: if (param_4 < 1) {
         L58: if ((*(uint *)((longlong)pdVar9 + 0xc) & 0xffffff) != 0) goto code_r0x0001400bb808;
       L58: buffer_write(buf, buffer_u8, 4);

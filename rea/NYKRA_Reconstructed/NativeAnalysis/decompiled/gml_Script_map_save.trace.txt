@@ -1,9 +1,12 @@
-LNone: undefined8 * gml_Script_map_save(longlong *param_1,undefined8 param_2,undefined8 *param_3,int param_4, undefined8 *param_5) {
+LNone: map_save();
   L0: FUN_1416ab750(gml_Script_map_save);
   L0: if (0 < iVar2) {
+    L0: with (oAenox_bound) {
     L0: if (0 < iVar2) {
       L0: do {
+        L7: instance_destroy();
       L7: } while (cVar1 != '\0');
+    L7: } // fim do with
     L7: if (lStack_1a8 != 0) {
   L35: var v_80 = buffer_create(8, 1, 1);
   L37: buffer_write(buf, buffer_u8, map_n);
@@ -11,34 +14,41 @@ LNone: undefined8 * gml_Script_map_save(longlong *param_1,undefined8 param_2,und
   L39: buffer_write(buf, buffer_u8, mh);
   L40: buffer_write(buf, buffer_u8, planet);
   L41: buffer_write(buf, buffer_u8, horizon);
-  L42: buffer_write(buf, buffer_u8, uStack_1b8);
-  L42: buffer_write(buf, buffer_u8, uStack_1b8);
-  L42: buffer_write(buf, buffer_u8, uStack_1b8);
+  L42: buffer_write(buf, buffer_u8, 0);
+  L42: buffer_write(buf, buffer_u8, 0);
+  L42: buffer_write(buf, buffer_u8, 0);
+  L44: i_168 = 0;
   L44: while( true ) {
-    L44: cmp(dStack_168, mw)
+    L44: cmp(i_168, mw)
     L44: if ((iVar2 == -2) || (-1 < iVar2)) break;
+    L45: i_178 = 0;
     L45: while( true ) {
-      L45: cmp(dStack_178, mh)
+      L45: cmp(i_178, mh)
       L45: if ((iVar2 == -2) || (-1 < iVar2)) break;
-      L46: var v_128 = array_get_2D(map, dStack_168, dStack_178);
+      L46: var v_128 = array_get_2D(map, i_168, i_178);
       L46: buffer_write(buf, buffer_u16, round(v_128));
+  L50: i_e8 = 0;
   L50: while( true ) {
-    L50: cmp(dStack_e8, array_length(_layer))
+    L50: cmp(i_e8, array_length(_layer))
     L50: if ((iVar2 == -2) || (-1 < iVar2)) break;
     L51: var v_448 = layer_get_id(_layer);
     L52: var v_470 = layer_tilemap_get_id(v_448);
+    L53: i_168 = 0;
     L53: while( true ) {
-      L53: cmp(dStack_168, mw)
+      L53: cmp(i_168, mw)
       L53: if ((iVar2 == -2) || (-1 < iVar2)) break;
+      L54: i_178 = 0;
       L54: while( true ) {
-        L54: cmp(dStack_178, mh)
+        L54: cmp(i_178, mh)
         L54: if ((iVar2 == -2) || (-1 < iVar2)) break;
-        L55: buffer_write(buf, buffer_u16, tilemap_get(v_470, dStack_168, dStack_178));
+        L55: buffer_write(buf, buffer_u16, tilemap_get(v_470, i_168, i_178));
+  L60: i_b0 = 0;
   L61: buffer_write(buf, buffer_u16, ds_list_size(oControl.asset_list[0]));
+  L62: i_e8 = 0;
   L62: while( true ) {
-    L62: cmp(dStack_e8, ds_list_size(oControl.asset_list[0]))
+    L62: cmp(i_e8, ds_list_size(oControl.asset_list[0]))
     L62: if ((iVar2 == -2) || (-1 < iVar2)) break;
-    L63: var v_b0 = ds_list_find_value(oControl.asset_list[0], dStack_e8);
+    L63: var v_b0 = ds_list_find_value(oControl.asset_list[0], i_e8);
     L64: var v_148 = layer_sprite_get_x(v_b0);
     L64: buffer_write(buf, buffer_u16, round(v_148));
     L65: var v_148 = layer_sprite_get_y(v_b0);
@@ -47,10 +57,11 @@ LNone: undefined8 * gml_Script_map_save(longlong *param_1,undefined8 param_2,und
     L66: var v_138 = sprite_get_name(v_148);
     L66: buffer_write(buf, buffer_string, string(v_138));
   L70: buffer_write(buf, buffer_u16, ds_list_size(oControl.asset_list[1]));
+  L71: i_e8 = 0;
   L71: while( true ) {
-    L71: cmp(dStack_e8, ds_list_size(oControl.asset_list[1]))
+    L71: cmp(i_e8, ds_list_size(oControl.asset_list[1]))
     L71: if ((iVar2 == -2) || (-1 < iVar2)) break;
-    L72: var v_b0 = ds_list_find_value(oControl.asset_list[1], dStack_e8);
+    L72: var v_b0 = ds_list_find_value(oControl.asset_list[1], i_e8);
     L73: var v_148 = layer_sprite_get_x(v_b0);
     L73: buffer_write(buf, buffer_u16, round(v_148));
     L74: var v_148 = layer_sprite_get_y(v_b0);
@@ -59,20 +70,23 @@ LNone: undefined8 * gml_Script_map_save(longlong *param_1,undefined8 param_2,und
     L75: var v_138 = sprite_get_name(v_148);
     L75: buffer_write(buf, buffer_string, string(v_138));
   L75: if (0 < iVar2) {
-    L80: var v_128 = ds_list_find_index(obj_list, uStack_238);
+    L80: var v_128 = ds_list_find_index(obj_list, oSAVE_WIRE.id);
     L80: ds_list_delete(obj_list, v_128);
-    L81: ds_list_insert(obj_list, 1, uStack_238);
+    L81: ds_list_insert(obj_list, 1, oSAVE_WIRE.id);
+  L84: i_b0 = 0;
   L85: buffer_write(buf, buffer_u16, ds_list_size(obj_list));
+  L86: i_e8 = 0;
   L86: do {
-    L86: cmp(dStack_e8, ds_list_size(obj_list))
+    L86: cmp(i_e8, ds_list_size(obj_list))
     L86: if ((iVar2 == -2) || (-1 < iVar2)) {
       L176: if (iStack_44c < 1) {
       L176: buffer_save(v_80, puVar5);
       L177: buffer_delete(v_80);
       L177: return puStack_478;
-    L88: var v_b0 = ds_list_find_value(obj_list, dStack_e8);
-    L88: cmp(is_undefined(v_b0), uStack_1b8)
+    L88: var v_b0 = ds_list_find_value(obj_list, i_e8);
+    L88: cmp(is_undefined(v_b0), 0)
     L88: if (iVar2 == 0) {
+      L90: test(instance_exists(v_b0))
       L90: if (cVar1 != '\0') {
         L92: buffer_write(buf, buffer_s16, v_b0.xstart);
         L93: buffer_write(buf, buffer_s16, v_b0.ystart);
@@ -174,11 +188,12 @@ LNone: undefined8 * gml_Script_map_save(longlong *param_1,undefined8 param_2,und
               L112: buffer_write(buf, buffer_u8, v_b0.locked);
             L103: buffer_write(buf, buffer_u16, v_b0.locked);
             L104: buffer_write(buf, buffer_u16, ds_list_size(v_b0.INV));
+            L105: i_1c8 = 0;
             L105: while( true ) {
-              L105: cmp(dStack_1c8, ds_list_size(v_b0.INV))
+              L105: cmp(i_1c8, ds_list_size(v_b0.INV))
               L105: if ((iVar2 == -2) || (-1 < iVar2)) break;
-              L106: var v_128 = ds_list_find_value(v_b0.INV, dStack_1c8);
+              L106: var v_128 = ds_list_find_value(v_b0.INV, i_1c8);
               L106: buffer_write(buf, buffer_u16, real(v_128));
-              L107: var v_138 = ds_list_find_value(v_b0.INV_N, dStack_1c8);
+              L107: var v_138 = ds_list_find_value(v_b0.INV_N, i_1c8);
               L107: buffer_write(buf, buffer_u16, real(v_138));
   L107: } while( true );
