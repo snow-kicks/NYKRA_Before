@@ -1,0 +1,14 @@
+LNone: undefined8 * gml_Script_load_GENERAL(undefined8 param_1,undefined8 param_2,undefined8 *param_3) {
+  L0: FUN_1416ab750(gml_Script_load_GENERAL);
+  L5: cmp(floor(oControl.game_loadchapter), -1)
+  L5: if ((iVar1 == -2) || (0 < iVar1)) {
+    L6: var v_158 = string(-1);
+  L11: var v_178 = buffer_load(-1);
+  L11: cmp(v_178, -1)
+  L11: if (iVar1 == 0) {
+    L13: buffer_seek(v_178, 0, 0);
+    L15: CURRENT_PLANET = buffer_read(v_178, 11);
+    L16: CURRENTROOM = buffer_read(v_178, 11);
+    L17: D_NUMBER = buffer_read(v_178, 5);
+    L19: buffer_delete(v_178);
+  L19: return puStack_180;

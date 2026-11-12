@@ -1,0 +1,171 @@
+LNone: undefined8 * gml_Script_save_game(longlong *param_1,undefined8 param_2,undefined8 *param_3) {
+  L0: FUN_1416ab750(gml_Script_save_game);
+  L136: gml_Script_save_GENERAL(plStack_78,uStack_80,&uStack_b0,0,0);
+  L137: gml_Script_save_CONTROL(plStack_78,uStack_80,&uStack_b0,0,0);
+  L138: gml_Script_save_CHARACTER(plStack_78,uStack_80,&uStack_b0,0,0);
+  L141: var v_90 = buffer_create(8, 1, 1);
+  L142: buffer_seek(v_90, 0, 0);
+  L146: buffer_write(buf, buffer_u8, oControl.mw);
+  L147: buffer_write(buf, buffer_u8, oControl.mh);
+  L148: buffer_write(buf, buffer_u8, oControl.planet);
+  L150: while( true ) {
+    L150: cmp(dStack_108, oControl.mw)
+    L150: if ((iVar2 == -2) || (-1 < iVar2)) break;
+    L151: while( true ) {
+      L151: cmp(dStack_178, oControl.mh)
+      L151: if ((iVar2 == -2) || (-1 < iVar2)) break;
+      L152: var v_128 = array_get_2D(map, dStack_108, dStack_178);
+      L152: buffer_write(buf, buffer_u16, round(v_128));
+  L156: if (0 < iVar2) {
+    L156: do {
+    L159: } while (cVar1 != '\0');
+  L159: if (0 < iVar2) {
+    L159: do {
+    L163: } while (cVar1 != '\0');
+  L163: if (0 < iVar2) {
+    L163: do {
+    L167: } while (cVar1 != '\0');
+  L167: if (0 < iVar2) {
+    L167: do {
+    L171: } while (cVar1 != '\0');
+  L171: if (0 < iVar2) {
+    L171: do {
+    L176: } while (cVar1 != '\0');
+  L176: if (0 < iVar2) {
+    L176: do {
+    L180: } while (cVar1 != '\0');
+  L180: if (0 < iVar2) {
+    L180: do {
+      L183: cmp(object_index, 514)
+      L183: if (iVar2 != 0) {
+    L184: } while (cVar1 != '\0');
+  L184: if (0 < iVar2) {
+    L184: do {
+    L188: } while (cVar1 != '\0');
+  L188: if (0 < iVar2) {
+    L188: do {
+    L192: } while (cVar1 != '\0');
+  L192: if (0 < iVar2) {
+    L192: do {
+    L196: } while (cVar1 != '\0');
+  L196: if (0 < iVar2) {
+    L196: do {
+    L200: } while (cVar1 != '\0');
+  L200: if (0 < iVar2) {
+    L200: do {
+    L204: } while (cVar1 != '\0');
+  L204: if (0 < iVar2) {
+    L204: do {
+    L208: } while (cVar1 != '\0');
+  L208: if (0 < iVar2) {
+    L208: do {
+    L212: } while (cVar1 != '\0');
+  L212: if (0 < iVar2) {
+    L212: do {
+    L216: } while (cVar1 != '\0');
+  L216: if (0 < iVar2) {
+    L216: do {
+      L219: cmp(persistent, dStack_a0)
+      L219: if (iVar2 != 0) {
+        L219: cmp(object_index, dStack_a0)
+        L219: if (iVar2 != 0) {
+          L219: cmp(object_index, dStack_a0)
+          L219: if (iVar2 != 0) {
+            L219: cmp(object_index, dStack_a0)
+            L219: if (iVar2 != 0) {
+              L222: var v_148 = object_get_name(object_index);
+              L222: buffer_write(buf, buffer_string, string(v_148));
+              L223: buffer_write(buf, buffer_f32, xstart);
+              L224: buffer_write(buf, buffer_f32, ystart);
+              L225: buffer_write(buf, buffer_f32, x);
+              L226: buffer_write(buf, buffer_f32, y);
+              L227: buffer_write(buf, buffer_s16, depth);
+              L228: buffer_write(buf, buffer_s16, speed);
+              L229: buffer_write(buf, buffer_s16, direction);
+              L230: buffer_write(buf, buffer_s16, friction);
+              L231: buffer_write(buf, buffer_s16, gravity);
+              L232: buffer_write(buf, buffer_s16, sprite_index);
+              L233: buffer_write(buf, buffer_s16, image_index);
+              L234: buffer_write(buf, buffer_s16, image_speed);
+              L235: buffer_write(buf, buffer_f32, image_alpha);
+              L236: buffer_write(buf, buffer_u32, image_blend);
+              L237: buffer_write(buf, buffer_u32, visible);
+              L239: buffer_write(buf, buffer_s16, alarm[0]);
+              L240: buffer_write(buf, buffer_s16, alarm[1]);
+              L241: buffer_write(buf, buffer_s16, alarm[2]);
+              L242: buffer_write(buf, buffer_s16, alarm[3]);
+              L243: buffer_write(buf, buffer_s16, alarm[4]);
+              L244: buffer_write(buf, buffer_s16, alarm[5]);
+              L245: buffer_write(buf, buffer_s16, alarm[6]);
+              L246: buffer_write(buf, buffer_s16, alarm[7]);
+              L247: buffer_write(buf, buffer_s16, alarm[8]);
+              L248: buffer_write(buf, buffer_s16, alarm[9]);
+              L249: buffer_write(buf, buffer_s16, alarm[10]);
+              L250: buffer_write(buf, buffer_s16, alarm[0xb]);
+              L250: test(variable_instance_exists(id, "Y"))
+              L250: if (cVar1 != '\0') {
+                L252: test(object_is_ancestor(object_index, 45 /*parEntity*/))
+                L252: if (cVar1 == '\0') {
+                  L252: cmp(physics, dStack_a0)
+                  L252: if (iVar2 == 0) {
+                    L252: cmp(collide_object, dStack_a0)
+                    L252: if (iVar2 == 0) {
+                      L252: cmp(mover, dStack_a0)
+                      L252: if (iVar2 == 0) {
+                        L252: cmp(do_grav, dStack_a0)
+              L252: test(variable_instance_exists(id, "y1"))
+              L252: if (cVar1 != '\0') {
+                L253: test(object_is_ancestor(object_index, 45 /*parEntity*/))
+                L253: if (cVar1 == '\0') {
+                  L253: cmp(physics, dStack_a0)
+                  L253: if (iVar2 == 0) {
+                    L253: cmp(collide_object, dStack_a0)
+                    L253: if (iVar2 == 0) {
+                      L253: cmp(mover, dStack_a0)
+                      L253: if (iVar2 == 0) {
+                        L253: cmp(do_grav, dStack_a0)
+              L253: test(variable_instance_exists(id, "y2"))
+              L253: if (cVar1 != '\0') {
+                L254: test(object_is_ancestor(object_index, 45 /*parEntity*/))
+                L254: if (cVar1 == '\0') {
+                  L254: cmp(physics, dStack_a0)
+                  L254: if (iVar2 == 0) {
+                    L254: cmp(collide_object, dStack_a0)
+                    L254: if (iVar2 == 0) {
+                      L254: cmp(mover, dStack_a0)
+                      L254: if (iVar2 == 0) {
+                        L254: cmp(do_grav, dStack_a0)
+              L256: var v_188 = variable_instance_get_names(id);
+              L258: buffer_write(buf, buffer_u16, ppdVar13(v_188));
+              L260: while( true ) {
+                L260: cmp(dStack_168, array_length(v_188))
+                L260: if ((iVar2 == -2) || (-1 < iVar2)) break;
+                L261: if (((uStack_17c & 0xffffff) == 2) && (dStack_188 != 0.0)) {
+                  L261: if ((iVar2 < 0) || (iVar3 = func_0x0001416ba8f0(dStack_188), iVar3 <= iVar2)) {
+                L261: var v_1f0 = variable_instance_get(id, pdVar8);
+                L263: if (((uStack_17c & 0xffffff) == 2) && (dStack_188 != 0.0)) {
+                  L263: if ((-1 < iVar2) && (iVar3 = func_0x0001416ba8f0(dStack_188), iVar2 < iVar3)) {
+                  L263: if ((uStack_84 & 0xffffff) != 0) goto LAB_1400c1cbb;
+                L263: buffer_write(buf, buffer_string, pdVar8);
+                L283: gml_Script__save_type(plStack_78,uStack_80,&uStack_b0,2,ppdVar13);
+    L283: } while (cVar1 != '\0');
+  L356: buffer_write(buf, buffer_u8, dStack_a0);
+  L358: buffer_save(v_90, dStack_a0);
+  L359: buffer_delete(v_90);
+  L359: if (lStack_400 != 0) {
+  L359: if (lStack_420 != 0) {
+  L359: if (lStack_440 != 0) {
+  L359: if (lStack_460 != 0) {
+  L359: if (lStack_480 != 0) {
+  L359: if (lStack_4a0 != 0) {
+  L359: if (lStack_4c0 != 0) {
+  L359: if (lStack_4e0 != 0) {
+  L359: if (lStack_220 != 0) {
+  L359: if (lStack_500 != 0) {
+  L359: if (lStack_520 != 0) {
+  L359: if (lStack_540 != 0) {
+  L359: if (lStack_560 != 0) {
+  L359: if (lStack_580 != 0) {
+  L359: if (lStack_5a0 != 0) {
+  L359: if (lStack_628 != 0) {
+  L359: return puStack_5b8;

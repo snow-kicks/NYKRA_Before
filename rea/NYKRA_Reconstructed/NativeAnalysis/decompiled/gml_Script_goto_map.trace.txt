@@ -1,0 +1,15 @@
+LNone: undefined8 * gml_Script_goto_map(undefined8 param_1,undefined8 param_2,undefined8 *param_3,int param_4, undefined8 *param_5) {
+  L0: FUN_1416ab750(gml_Script_goto_map);
+  L0: if (param_4 < 2) {
+  L0: cmp(puVar4, 1)
+  L0: if (iVar2 == 0) {
+    L3: gml_Script_save_game(param_1,param_2,&uStack_70,0,0);
+  L3: if (0 < iVar2) {
+    L3: do {
+      L5: if (0 < param_4) {
+      L5: if (0 < param_4) {
+      L5: var v_e8 = string(puVar4);
+      L5: gml_Script_map_load(uStack_60,uStack_78,&uStack_70,2,in_stack_fffffffffffffe58);
+    L5: } while (cVar1 != '\0');
+  L5: if (lStack_160 != 0) {
+  L5: return puStack_178;

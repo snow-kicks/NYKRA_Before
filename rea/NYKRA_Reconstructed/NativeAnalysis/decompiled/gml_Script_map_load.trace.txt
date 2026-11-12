@@ -1,0 +1,350 @@
+LNone: undefined8 * gml_Script_map_load(longlong *param_1,undefined8 param_2,undefined8 *param_3,int param_4, undefined8 *param_5) {
+  L0: FUN_1416ab750(gml_Script_map_load);
+  L217: draw_texture_flush();
+  L218: instance_activate_all();
+  L220: if (param_4 < 2) {
+  L220: file_current = puVar13;
+  L221: if (param_4 < 2) {
+  L221: CURRENTROOM = puVar13;
+  L225: if (cVar1 != '\0') {
+    L227: if (cVar1 != '\0') {
+      L231: oCamera.xx = uStack_440;
+      L232: oCamera.yy = uStack_430;
+      L233: camera_set_view_pos(cam, uStack_188, uStack_188);
+      L234: oCamera.mv = uStack_3c8;
+      L235: oCamera.mh = uStack_578;
+      L237: if (0 < iVar2) {
+        L237: do {
+        L238: } while (cVar1 != '\0');
+      L238: if (lStack_178 != 0) {
+  L242: if (param_4 < 1) {
+  L242: var v_f8 = buffer_load(puVar13);
+  L243: map_n = buffer_read(v_f8, 1);
+  L244: mw = buffer_read(v_f8, 1);
+  L245: mh = buffer_read(v_f8, 1);
+  L247: var v_328 = mean(uStack_440, uStack_188);
+  L248: var v_318 = mean(uStack_430, uStack_188);
+  L249: var v_578 = mean(oCamera.xx, uStack_188);
+  L249: oCamera.xx = v_578;
+  L250: var v_468 = mean(oCamera.yy, uStack_188);
+  L250: oCamera.yy = v_468;
+  L251: camera_set_view_pos(cam, uStack_188, uStack_188);
+  L252: oCamera.mv = uStack_818;
+  L253: oCamera.mh = uStack_808;
+  L257: planet = buffer_read(v_f8, 1);
+  L258: uStack_7d8 = planet;
+  L259: horizon = buffer_read(v_f8, 1);
+  L260: var v_560 = buffer_read(v_f8, 1);
+  L261: var v_560 = buffer_read(v_f8, 1);
+  L262: var v_560 = buffer_read(v_f8, 1);
+  L266: while( true ) {
+    L266: cmp(dStack_d8, mw)
+    L266: if ((iVar2 == -2) || (0 < iVar2)) break;
+    L267: while( true ) {
+      L267: cmp(dStack_2c8, mh)
+      L267: if ((iVar2 == -2) || (0 < iVar2)) break;
+        L269: if ((uStack_cc & 0xffffff) != 0) goto LAB_14004e10f;
+  L275: gml_Script_clear_objects(plStack_78,uStack_90,&uStack_88,0,0);
+  L275: if (0 < iVar2) {
+    L275: do {
+    L276: } while (cVar1 != '\0');
+  L276: if (0 < iVar2) {
+    L278: if (0 < iVar2) {
+      L278: do {
+      L281: } while (cVar1 != '\0');
+    L281: if (lStack_2a8 != 0) {
+  L289: while( true ) {
+    L289: cmp(dStack_1b8, mw)
+    L289: if ((iVar2 == -2) || (-1 < iVar2)) break;
+    L290: while( true ) {
+      L290: cmp(dStack_1a8, mh)
+      L290: if ((iVar2 == -2) || (-1 < iVar2)) break;
+      L291: var v_4f8 = buffer_read(v_f8, 3);
+      L292: cmp(v_4f8, 67)
+      L292: if (iVar2 == 0) {
+          L300: if ((uStack_1ac & 0xffffff) != 0) goto LAB_14004e83a;
+          L293: if ((uStack_1ac & 0xffffff) != 0) goto LAB_14004e7c0;
+        L293: cmp(array_get_2D(map_id, v_4f8, 4), -4)
+        L293: if (iVar2 != 0) {
+          L293: var v_218 = array_get_2D(map_id, v_4f8, 4);
+          L293: cmp(instance_position(-4, -4, v_218), -4)
+          L293: if (iVar2 == 0) {
+            L295: if (((*(uint *)((longlong)plVar11 + 0xc) & 0xffffff) == 2) && (*plVar11 != 0)) {
+              L295: if (iVar2 < 6) {
+            L295: if (((*(uint *)((longlong)plVar11 + 0xc) & 0xffffff) == 2) && (*plVar11 != 0)) {
+              L295: if (iVar2 < 5) {
+            L295: instance_create_depth(-4, -4, plVar11, plVar11);
+  L305: while( true ) {
+    L305: cmp(dStack_d8, array_length(_layer))
+    L305: if ((iVar2 == -2) || (-1 < iVar2)) break;
+    L306: var v_420 = layer_get_id(_layer);
+    L307: var v_4e8 = layer_tilemap_get_id(v_420);
+    L308: tilemap_clear(v_4e8, 0);
+    L309: while( true ) {
+      L309: cmp(dStack_1b8, mw)
+      L309: if ((iVar2 == -2) || (-1 < iVar2)) break;
+      L310: while( true ) {
+        L310: cmp(dStack_1a8, mh)
+        L310: if ((iVar2 == -2) || (-1 < iVar2)) break;
+        L311: var v_4f8 = buffer_read(v_f8, 3);
+        L311: cmp(v_4f8, -4)
+        L311: if (iVar2 != 0) {
+          L312: tilemap_set(v_4e8, v_4f8, dStack_1b8, dStack_1a8);
+  L312: test(ds_exists(oControl.asset_list[0], 2))
+  L312: if (cVar1 != '\0') {
+    L319: while( true ) {
+      L319: cmp(dStack_198, ds_list_size(oControl.asset_list[0]))
+      L319: if ((iVar2 == -2) || (-1 < iVar2)) break;
+      L320: var v_268 = ds_list_find_value(oControl.asset_list[0], dStack_198);
+      L320: layer_sprite_destroy(v_268);
+    L322: ds_list_destroy(oControl.asset_list[0]);
+  L324: oControl.asset_list[0] = -1;
+  L325: var v_3f8 = ds_list_create();
+  L325: oControl.asset_list[0] = v_3f8;
+  L326: var v_420 = layer_get_id(oControl.asset_layer[0]);
+  L327: var v_4e8 = layer_tilemap_get_id(v_420);
+  L328: var v_398 = buffer_read(v_f8, 3);
+  L329: while( true ) {
+    L329: cmp(dStack_d8, v_398)
+    L329: if ((iVar2 == -2) || (-1 < iVar2)) break;
+    L330: var v_2f8 = buffer_read(v_f8, 3);
+    L331: var v_2e8 = buffer_read(v_f8, 3);
+    L332: var v_2d8 = buffer_read(v_f8, 11);
+    L333: var v_258 = buffer_read(v_2d8);
+    L333: var v_238 = layer_sprite_create(v_420, v_2f8, v_2e8, v_258);
+    L333: ds_list_add(oControl.asset_list[0], v_238);
+  L333: test(ds_exists(oControl.asset_list[1], 2))
+  L333: if (cVar1 != '\0') {
+    L337: while( true ) {
+      L337: cmp(dStack_198, ds_list_size(oControl.asset_list[1]))
+      L337: if ((iVar2 == -2) || (-1 < iVar2)) break;
+      L338: var v_268 = ds_list_find_value(oControl.asset_list[1], dStack_198);
+      L338: layer_sprite_destroy(v_268);
+    L340: ds_list_destroy(oControl.asset_list[1]);
+  L342: oControl.asset_list[1] = -1;
+  L343: var v_3e8 = ds_list_create();
+  L343: oControl.asset_list[1] = v_3e8;
+  L344: var v_420 = layer_get_id(oControl.asset_layer[1]);
+  L345: var v_4e8 = layer_tilemap_get_id(v_420);
+  L346: var v_398 = buffer_read(v_f8, 3);
+  L347: while( true ) {
+    L347: cmp(dStack_d8, v_398)
+    L347: if ((iVar2 == -2) || (-1 < iVar2)) break;
+    L348: var v_2f8 = buffer_read(v_f8, 3);
+    L349: var v_2e8 = buffer_read(v_f8, 3);
+    L350: var v_2d8 = buffer_read(v_f8, 11);
+    L351: var v_258 = buffer_read(v_2d8);
+    L351: var v_238 = layer_sprite_create(v_420, v_2f8, v_2e8, v_258);
+    L351: ds_list_add(oControl.asset_list[1], v_238);
+  L355: while( true ) {
+    L355: cmp(dStack_198, ds_list_size(puStack_300))
+    L355: if ((iVar2 == -2) || (-1 < iVar2)) break;
+    L355: if (cVar1 != '\0') {
+      L356: cmp(ds_list_find_value(puStack_300, dStack_198).uVar4, 1)
+      L356: if (iVar2 != 0) {
+        L358: var v_228 = ds_list_find_value(puStack_300, dStack_198);
+  L358: if (0 < iVar2) {
+    L358: do {
+    L362: } while (cVar1 != '\0');
+  L363: ds_list_destroy(puStack_300);
+  L365: puStack_300 = ds_list_create();
+  L369: var v_398 = ppdVar17(v_f8, 3);
+  L376: while( true ) {
+    L376: cmp(dStack_d8, v_398)
+    L376: if ((iVar2 == -2) || (-1 < iVar2)) goto LAB_140055f24;
+    L376: cmp(ppdVar17(v_f8), buffer_get_size(3))
+    L376: if (-1 < iVar2) break;
+    L380: var v_2f8 = buffer_read(v_f8, 4);
+    L381: var v_2e8 = buffer_read(v_f8, 4);
+    L382: var v_2d8 = buffer_read(v_f8, 4);
+    L383: var v_388 = buffer_read(v_f8, 11);
+    L383: cmp(ppdVar17(v_388), -1)
+    L383: if (iVar2 != 0) {
+      L385: var v_248 = asset_get_index(v_388);
+      L385: var v_e8 = instance_create_depth(v_2f8, v_2e8, v_2d8, v_248);
+      L386: ds_list_add(puStack_300, v_e8);
+      L386: test(object_is_ancestor(v_e8.object_index, 45 /*parEntity*/))
+      L386: if (cVar1 != '\0') {
+        L387: object_is_ancestor(v_e8.object_index, 45 /*parEntity*/) = v_e8;
+      L389: cmp(asset_get_index(v_388), 81)
+      L389: if (iVar2 == 0) {
+        L390: var v_378 = buffer_read(v_f8, 1);
+        L390: var v_3a8 = ppdVar17(v_f8, 11);
+        L391: v_e8.n = v_378;
+        L392: v_e8.rm = v_3a8;
+        L395: test(object_is_ancestor(v_e8.object_index, 50 /*parLootable*/))
+        L395: if (cVar1 == '\0') {
+          L408: var v_288 = asset_get_index(v_388);
+          L408: test(object_is_ancestor(v_288, 51 /*parDoor_out*/))
+          L408: if (cVar1 == '\0') {
+            L413: var v_288 = asset_get_index(v_388);
+            L413: test(object_is_ancestor(v_288, 55 /*parDoor_Flat*/))
+            L413: if (cVar1 == '\0') {
+              L420: cmp(asset_get_index(v_388), 179)
+              L420: if (iVar2 == 0) {
+                L421: var v_378 = buffer_read(v_f8, 3);
+                L421: var v_3a8 = buffer_read(v_f8, 3);
+                L421: var v_520 = buffer_read(v_f8, 1);
+                L421: var v_778 = ppdVar17(v_f8, 4);
+                L422: v_e8.width = v_378;
+                L423: v_e8.repeat_t = v_3a8;
+                L424: v_e8.material = v_520;
+                L425: v_e8.dir = v_778;
+                L428: var v_288 = asset_get_index(v_388);
+                L428: test(object_is_ancestor(v_288, 611 /*parNote*/))
+                L428: if (cVar1 == '\0') {
+                  L434: var v_288 = asset_get_index(v_388);
+                  L434: test(ppdVar17(v_288, 666 /*oBook*/))
+                  L434: if (cVar1 == '\0') {
+                    L434: cmp(ppdVar17(v_388), 666)
+                    L434: if (iVar2 != 0) {
+                      L434: if (0 < iVar2) {
+                        L440: test(ppdVar17(v_e8.object_index, 207 /*parWire*/))
+                        L440: if (cVar1 != '\0') {
+                          L441: test(variable_instance_exists(v_e8, "anim1"))
+                          L441: if (cVar1 != '\0') {
+                            L442: var v_6e8 = buffer_read(v_f8, 4);
+                            L442: v_e8.anim1 = v_6e8;
+                          L442: test(variable_instance_exists(v_e8, "anim2"))
+                          L442: if (cVar1 != '\0') {
+                            L443: var v_6d8 = buffer_read(v_f8, 4);
+                            L443: v_e8.anim2 = v_6d8;
+                          L443: test(variable_instance_exists(v_e8, "anim3"))
+                          L443: if (cVar1 != '\0') {
+                            L444: var v_6c8 = buffer_read(v_f8, 4);
+                            L444: v_e8.anim3 = v_6c8;
+                          L444: test(variable_instance_exists(v_e8, "anim4"))
+                          L444: if (cVar1 != '\0') {
+                            L445: var v_6b8 = buffer_read(v_f8, 4);
+                            L445: v_e8.anim4 = v_6b8;
+                          L445: test(variable_instance_exists(v_e8, "anim5"))
+                          L445: if (cVar1 != '\0') {
+                            L446: var v_6a8 = buffer_read(v_f8, 4);
+                            L446: v_e8.anim5 = v_6a8;
+                          L446: test(variable_instance_exists(v_e8, "anim6"))
+                          L446: if (cVar1 != '\0') {
+                            L447: var v_698 = buffer_read(v_f8, 4);
+                            L447: v_e8.anim6 = v_698;
+                          L447: test(variable_instance_exists(v_e8, "anim7"))
+                          L447: if (cVar1 != '\0') {
+                            L448: var v_688 = buffer_read(v_f8, 4);
+                            L448: v_e8.anim7 = v_688;
+                          L448: test(variable_instance_exists(v_e8, "anim8"))
+                          L448: if (cVar1 != '\0') {
+                            L449: var v_678 = buffer_read(v_f8, 4);
+                            L449: v_e8.anim8 = v_678;
+                          L449: test(variable_instance_exists(v_e8, "anim9"))
+                          L449: if (cVar1 != '\0') {
+                            L450: var v_668 = buffer_read(v_f8, 4);
+                            L450: v_e8.anim9 = v_668;
+                          L450: test(variable_instance_exists(v_e8, "d"))
+                          L450: if (cVar1 != '\0') {
+                            L452: var v_658 = buffer_read(v_f8, 4);
+                            L452: v_e8.d[0] = v_658;
+                          L452: test(variable_instance_exists(v_e8, "d"))
+                          L452: if (cVar1 != '\0') {
+                            L453: var v_648 = buffer_read(v_f8, 4);
+                            L453: v_e8.d[1] = v_648;
+                          L453: test(variable_instance_exists(v_e8, "d"))
+                          L453: if (cVar1 != '\0') {
+                            L454: var v_638 = buffer_read(v_f8, 4);
+                            L454: v_e8.d[2] = v_638;
+                          L454: test(variable_instance_exists(v_e8, "d"))
+                          L454: if (cVar1 != '\0') {
+                            L455: var v_628 = buffer_read(v_f8, 4);
+                            L455: v_e8.d[3] = v_628;
+                          L455: test(variable_instance_exists(v_e8, "an"))
+                          L455: if (cVar1 != '\0') {
+                            L457: var v_618 = buffer_read(v_f8, 4);
+                            L457: v_e8.an[0] = v_618;
+                          L457: test(variable_instance_exists(v_e8, "an"))
+                          L457: if (cVar1 != '\0') {
+                            L458: var v_608 = buffer_read(v_f8, 4);
+                            L458: v_e8.an[1] = v_608;
+                          L458: test(variable_instance_exists(v_e8, "an"))
+                          L458: if (cVar1 != '\0') {
+                            L459: var v_5f8 = buffer_read(v_f8, 4);
+                            L459: v_e8.an[2] = v_5f8;
+                          L459: test(variable_instance_exists(v_e8, "an"))
+                          L459: if (cVar1 != '\0') {
+                            L460: var v_5e8 = buffer_read(v_f8, 4);
+                            L460: v_e8.an[3] = v_5e8;
+                          L460: test(variable_instance_exists(v_e8, "anim"))
+                          L460: if (cVar1 != '\0') {
+                            L462: var v_5d8 = buffer_read(v_f8, 4);
+                            L462: v_e8.anim = v_5d8;
+                          L462: test(variable_instance_exists(v_e8, "on"))
+                          L462: if (cVar1 != '\0') {
+                            L463: var v_5c8 = buffer_read(v_f8, 4);
+                            L463: v_e8.on = v_5c8;
+                          L463: test(ppdVar17(v_e8, "power_on"))
+                          L463: if (cVar1 != '\0') {
+                            L464: var v_5b8 = ppdVar17(v_f8, 4);
+                            L464: v_e8.power_on = v_5b8;
+                  L435: var v_378 = buffer_read(v_f8, 1);
+                  L435: var v_3a8 = ppdVar17(v_f8, 1);
+                  L436: v_e8.book = v_378;
+                  L437: v_e8.book_text = v_3a8;
+                  L429: var v_378 = buffer_read(v_f8, 11);
+                  L429: var v_3a8 = buffer_read(v_f8, 1);
+                  L430: uVar5 = gml_Script_real_string(plStack_78,uStack_90,&uStack_88,1,ppdVar17);
+                  L430: var v_728 = buffer_read(v_f8, 1);
+                  L430: v_e8.text = v_728;
+                  L431: v_e8.page = v_3a8;
+              L414: var v_378 = buffer_read(v_f8, 1);
+              L414: var v_3a8 = buffer_read(v_f8, 1);
+              L414: var v_520 = ppdVar17(v_f8, 11);
+              L415: v_e8.locked = v_378;
+              L416: v_e8.n = v_3a8;
+              L417: v_e8.rm = v_520;
+            L409: var v_378 = ppdVar17(v_f8, 1);
+            L410: v_e8.locked = v_378;
+          L396: var v_378 = buffer_read(v_f8, 3);
+          L396: var v_3a8 = buffer_read(v_f8, 3);
+          L397: v_e8.locked = v_378;
+          L399: ds_list_clear(v_e8.INV);
+          L400: ppdVar17(v_e8.INV_N);
+          L401: cmp(dStack_2c8, v_3a8)
+            L402: var v_488 = buffer_read(v_f8, 3);
+            L403: var v_478 = buffer_read(v_f8, 3);
+            L404: gml_Script_inv_add_obj(plStack_78,uStack_90,&uStack_88,3,ppdVar17);
+  L378: if (0 < iVar2) {
+    L477: if (0 < iVar2) {
+      L477: do {
+        L478: cmp(path_side, 64)
+        L478: if (iVar2 != 0) {
+          L478: cmp(has_path, -1)
+          L478: if (iVar2 != 0) {
+            L480: if (0 < iVar2) {
+              L480: do {
+                L481: cmp(n, oPlayer.has_path)
+                L481: if (iVar2 == 0) {
+                  L484: gml_Script_obj_setpos(plStack_78,uStack_90,&uStack_88,3,ppdVar17);
+              L485: } while (cVar1 != '\0');
+            L490: if (lStack_3b8 != 0) {
+      L490: } while (cVar1 != '\0');
+    L490: if (0 < iVar2) {
+      L494: gml_Script_obj_setpos(plStack_78,uStack_90,&uStack_88,3,ppdVar17);
+    L494: if (lStack_338 != 0) {
+  L497: buffer_delete(v_f8);
+  L497: test(oControl.START_GAME)
+  L497: if (cVar1 != '\0') {
+    L499: gml_Script_load_game(plStack_78,uStack_90,&uStack_88,0,0);
+  L503: gml_Script_reset_files(plStack_78,uStack_90,&uStack_88,0,0);
+  L503: if (0 < iVar2) {
+    L503: do {
+      L505: colour = oControl.FADE_COLOUR;
+    L505: } while (cVar1 != '\0');
+  L506: gml_Script__SET_SCENE(plStack_78,uStack_90,&uStack_88);
+  L506: if (0 < iVar2) {
+    L508: if (0 < iVar2) {
+      L510: gml_Script_obj_setpos(plStack_78,uStack_90,&uStack_88,3,ppdVar17);
+    L512: ppdVar17(oEo.ui_pos_mem);
+    L513: oEo.can_see = 1;
+    L514: oEo.in_radius = 1;
+    L515: oEo.ring_fade = 1;
+  L518: instance_activate_all();
+  L518: if (lStack_338 != 0) {
+  L518: if (lStack_2a8 != 0) {
+  L518: if (lStack_178 != 0) {
+  L518: return puStack_7d0;

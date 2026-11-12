@@ -1,0 +1,223 @@
+LNone: undefined8 * gml_Script_load_game(longlong *param_1,undefined8 param_2,undefined8 *param_3) {
+  L0: FUN_1416ab750(gml_Script_load_game);
+  L13: cmp(floor(oControl.game_loadchapter), -1)
+  L13: if ((iVar3 == -2) || (0 < iVar3)) {
+    L14: var v_308 = string(-1);
+  L14: if (0 < iVar3) {
+    L14: if (cVar2 != '\0') {
+      L23: oCamera.xx = uStack_4b0;
+      L24: oCamera.yy = uStack_4a0;
+      L25: oCamera.mv = uStack_c8;
+      L26: oCamera.mh = uStack_108;
+      L27: camera_set_view_pos(cam, uStack_138, uStack_138);
+  L27: if (0 < iVar3) {
+    L27: do {
+      L31: var v_228 = mean(uStack_4b0, 79);
+      L32: var v_218 = mean(uStack_4a0, 79);
+      L33: var v_178 = mean(oCamera.xx, uStack_c8);
+      L33: oCamera.xx = v_178;
+      L34: var v_c8 = mean(oCamera.yy, uStack_108);
+      L34: oCamera.yy = v_c8;
+      L35: camera_set_view_pos(cam, uStack_108, uStack_108);
+      L36: oCamera.mv = uStack_108;
+      L37: oCamera.mh = uStack_138;
+    L38: } while (cVar2 != '\0');
+  L41: var v_f0 = buffer_load(-1);
+  L41: cmp(v_f0, -1)
+  L41: if (iVar3 == 0) {
+    L43: buffer_seek(v_f0, 2, -1);
+    L44: var v_3b0 = buffer_tell(v_f0);
+    L45: buffer_seek(v_f0, 0, 0);
+    L49: var v_108 = buffer_read(v_f0, 1);
+    L49: oControl.mw = v_108;
+    L50: var v_138 = buffer_read(v_f0, 1);
+    L50: oControl.mh = v_138;
+    L51: var v_158 = buffer_read(v_f0, 1);
+    L51: oControl.planet = v_158;
+    L56: while( true ) {
+      L56: cmp(dStack_248, mw)
+      L56: if ((iVar3 == -2) || (0 < iVar3)) break;
+      L57: while( true ) {
+        L57: cmp(dStack_280, mh)
+        L57: if ((iVar3 == -2) || (0 < iVar3)) break;
+          L59: if ((uStack_23c & 0xffffff) != 0) goto LAB_1400c868f;
+    L63: while( true ) {
+      L63: cmp(dStack_128, oControl.mw)
+      L63: if ((iVar3 == -2) || (-1 < iVar3)) break;
+      L64: while( true ) {
+        L64: cmp(dStack_270, oControl.mh)
+        L64: if ((iVar3 == -2) || (-1 < iVar3)) break;
+          L65: if ((uStack_11c & 0xffffff) != 0) goto LAB_1400c8a9f;
+    L70: instance_activate_all();
+    L71: gml_Script_clear_objects(plStack_78,uStack_90,&uStack_88,0,0);
+    L71: do {
+      L73: cmp(-1, v_3b0)
+      L73: if (-1 < iVar3) break;
+      L77: var v_2f8 = buffer_read(v_f0, 11);
+      L77: var v_490 = asset_get_index(v_2f8);
+      L77: cmp(v_490, -1)
+      L77: if (iVar3 != 0) {
+        L77: cmp(v_490, -1)
+        L77: if (0 < iVar3) {
+          L80: var v_5e0 = buffer_read(v_f0, 8);
+          L81: var v_5d0 = buffer_read(v_f0, 8);
+          L82: var v_5c0 = buffer_read(v_f0, 8);
+          L83: var v_5b0 = buffer_read(v_f0, 8);
+          L84: var v_4c0 = buffer_read(v_f0, 4);
+          L84: cmp(-1, v_3b0)
+          L84: if (-1 < iVar3) break;
+          L88: var v_390 = instance_create_depth(v_5e0, v_5d0, v_4c0, v_490);
+          L88: if (0 < iVar3) {
+            L88: do {
+              L93: var v_570 = buffer_read(v_f0, 4);
+              L94: var v_560 = buffer_read(v_f0, 4);
+              L95: var v_550 = buffer_read(v_f0, 4);
+              L96: var v_540 = buffer_read(v_f0, 4);
+              L97: var v_530 = buffer_read(v_f0, 4);
+              L98: var v_520 = buffer_read(v_f0, 4);
+              L99: var v_510 = buffer_read(v_f0, 4);
+              L100: var v_500 = buffer_read(v_f0, 8);
+              L101: var v_4f0 = buffer_read(v_f0, 5);
+              L102: var v_2f8 = buffer_read(v_f0, 5);
+              L102: var v_2e8 = round(v_2f8);
+              L102: var v_4e0 = bool(v_2e8);
+              L104: cmp(alarm[0], -1)
+              L104: if ((iVar3 == -2) || (0 < iVar3)) {
+                L104: var v_208 = buffer_read(v_f0, 4);
+                L105: var v_480 = buffer_read(v_f0, 4);
+              L105: cmp(alarm[1], -1)
+              L105: if ((iVar3 == -2) || (0 < iVar3)) {
+                L105: var v_208 = buffer_read(v_f0, 4);
+                L106: var v_470 = buffer_read(v_f0, 4);
+              L106: cmp(alarm[2], -1)
+              L106: if ((iVar3 == -2) || (0 < iVar3)) {
+                L106: var v_208 = buffer_read(v_f0, 4);
+                L107: var v_460 = buffer_read(v_f0, 4);
+              L107: cmp(alarm[3], -1)
+              L107: if ((iVar3 == -2) || (0 < iVar3)) {
+                L107: var v_208 = buffer_read(v_f0, 4);
+                L108: var v_450 = buffer_read(v_f0, 4);
+              L108: cmp(alarm[4], -1)
+              L108: if ((iVar3 == -2) || (0 < iVar3)) {
+                L108: var v_208 = buffer_read(v_f0, 4);
+                L109: var v_440 = buffer_read(v_f0, 4);
+              L109: cmp(alarm[5], -1)
+              L109: if ((iVar3 == -2) || (0 < iVar3)) {
+                L109: var v_208 = buffer_read(v_f0, 4);
+                L110: var v_430 = buffer_read(v_f0, 4);
+              L110: cmp(alarm[6], -1)
+              L110: if ((iVar3 == -2) || (0 < iVar3)) {
+                L110: var v_208 = buffer_read(v_f0, 4);
+                L111: var v_420 = buffer_read(v_f0, 4);
+              L111: cmp(alarm[7], -1)
+              L111: if ((iVar3 == -2) || (0 < iVar3)) {
+                L111: var v_208 = buffer_read(v_f0, 4);
+                L112: var v_410 = buffer_read(v_f0, 4);
+              L112: cmp(alarm[8], -1)
+              L112: if ((iVar3 == -2) || (0 < iVar3)) {
+                L112: var v_208 = buffer_read(v_f0, 4);
+                L113: var v_400 = buffer_read(v_f0, 4);
+              L113: cmp(alarm[9], -1)
+              L113: if ((iVar3 == -2) || (0 < iVar3)) {
+                L113: var v_208 = buffer_read(v_f0, 4);
+                L114: var v_3f0 = buffer_read(v_f0, 4);
+              L114: cmp(alarm[10], -1)
+              L114: if ((iVar3 == -2) || (0 < iVar3)) {
+                L114: var v_208 = buffer_read(v_f0, 4);
+                L115: var v_3e0 = buffer_read(v_f0, 4);
+              L115: cmp(alarm[0xb], -1)
+              L115: if ((iVar3 == -2) || (0 < iVar3)) {
+                L115: var v_208 = buffer_read(v_f0, 4);
+                L116: var v_3d0 = buffer_read(v_f0, 4);
+              L118: var v_4d0 = buffer_read(v_f0, 3);
+              L120: while( true ) {
+                L120: cmp(dStack_238, v_4d0)
+                L120: if ((iVar3 == -2) || (-1 < iVar3)) break;
+                L122: var v_2b0 = buffer_read(v_f0, 11);
+                L124: var v_2c0 = variable_instance_exists(id, v_2b0);
+                L126: var v_338 = buffer_read(v_f0, 1);
+                L128: if ((*(int *)(*(longlong *) (*(longlong *)(unaff_GS_OFFSET + 0x58) + (ulonglong)__tls_index * 8) + 4) < _DAT_14217f368) && (FUN_14193dcf0(&DAT_14217f368), _DAT_14217f368 == -1)) {
+                L128: cmp(DAT_14217f2f0, -1)
+                L128: if (iVar3 == 0) {
+                    L130: var v_198 = buffer_read(v_f0, 8);
+                    L130: test(v_2c0)
+                    L130: if (cVar2 != '\0') {
+                      L131: uRam00000001420da680(id, v_2b0, v_198);
+                    L135: var v_198 = buffer_read(v_f0, 11);
+                    L135: test(v_2c0)
+                    L135: if (cVar2 != '\0') {
+                      L136: uRam00000001420da680(id, v_2b0, v_198);
+                    L141: var v_2a0 = buffer_read(v_f0, 3);
+                    L143: cmp(dStack_1f8, v_2a0)
+                    L147: cmp(dStack_128, v_2a0)
+                      L148: var v_188 = buffer_read(v_f0, 1);
+                      L149: if ((*(int *)(*(longlong *) (*(longlong *)(unaff_GS_OFFSET + 0x58) + (ulonglong)__tls_index * 8) + 4) < iRam000000014217f3ac) && (FUN_14193dcf0(0x14217f3ac), iRam000000014217f3ac == -1)) {
+                      L149: cmp(0x14217f370, uStack_118)
+                      L149: if (iVar3 == 0) {
+                        L149: if (iVar3 == 2) {
+                          L179: var v_198 = buffer_read(v_f0, 10);
+                          L179: if (iVar3 != 1) {
+                            L179: if (iVar3 == 0) {
+                              L151: var v_198 = buffer_read(v_f0, 8);
+                          L155: var v_370 = buffer_read(v_f0, 3);
+                          L156: cmp(dStack_1e8, v_370)
+                          L160: cmp(dStack_1c8, v_370)
+                            L161: var v_188 = buffer_read(v_f0, 1);
+                            L162: if ((*(int *)(*(longlong *) (*(longlong *)(unaff_GS_OFFSET + 0x58) + (ulonglong)__tls_index * 8) + 4) < iRam000000014217f3d8) && (FUN_14193dcf0(0x14217f3d8), iRam000000014217f3d8 == -1)) {
+                            L162: cmp(0x14217f3b0, uStack_290)
+                            L162: if (iVar3 == 0) {
+                              L162: if (iVar3 != 1) {
+                                L162: if (iVar3 == 0) {
+                                  L164: var v_380 = buffer_read(v_f0, 8);
+                              L168: var v_380 = buffer_read(v_f0, 10);
+                              L168: if ((uStack_1bc & 0xffffff) != 0) goto code_r0x0001400ccdd0;
+                              L172: cmp(0x14217f3c4, uStack_290)
+                              L172: if (iVar3 == 0) {
+                        L175: if ((uStack_11c & 0xffffff) != 0) goto code_r0x0001400cc785;
+                        L183: cmp(0x14217f384, uStack_118)
+                        L183: if (iVar3 == 0) {
+                        L183: cmp(0x14217f398, uStack_118)
+                        L183: if (iVar3 == 0) {
+                    L183: test(v_2c0)
+                    L183: if (cVar2 != '\0') {
+                      L186: uRam00000001420da680(id, v_2b0, uStack_360);
+                    L190: var v_198 = buffer_read(v_f0, 10);
+                    L190: test(v_2c0)
+                    L190: if (cVar2 != '\0') {
+                      L191: uRam00000001420da680(id, v_2b0, v_198);
+                    L195: var v_198 = buffer_read(v_f0, 6);
+                    L195: test(v_2c0)
+                    L195: if (cVar2 != '\0') {
+                      L196: uRam00000001420da680(id, v_2b0, v_198);
+                    L201: var v_2a0 = buffer_read(v_f0, 3);
+                    L203: test(v_2c0)
+                    L203: if (cVar2 == '\0') {
+                    L203: test(ds_exists(uStack_118, 2))
+                    L203: if (cVar2 != '\0') {
+                      L205: ds_list_clear(uStack_118);
+                    L207: while( true ) {
+                      L207: cmp(dStack_128, v_2a0)
+                      L207: if ((iVar3 == -2) || (-1 < iVar3)) break;
+                      L208: var v_188 = buffer_read(v_f0, 8);
+                      L209: ds_list_add(uStack_118, v_188);
+                  L209: cmp(DAT_14217f304, -1)
+                  L209: if (iVar3 == 0) {
+                  L209: cmp(DAT_14217f318, -1)
+                  L209: if (iVar3 == 0) {
+                  L209: cmp(DAT_14217f32c, -1)
+                  L209: if (iVar3 == 0) {
+                  L209: cmp(DAT_14217f340, -1)
+                  L209: if (iVar3 == 0) {
+                  L209: cmp(DAT_14217f354, -1)
+                  L209: if (iVar3 == 0) {
+                L209: cmp(uStack_118, v_3b0)
+                L209: if (iVar3 < 0) {
+                L217: if (iVar3 != 0) break;
+            L217: } while (cVar2 != '\0');
+          L217: if (lStack_168 != 0) {
+      L217: cmp(-1, v_3b0)
+    L217: } while (iVar3 < 0);
+    L225: buffer_delete(v_f0);
+    L227: gml_Script__SET_SCENE(plStack_78,uStack_90,&uStack_88,0,0);
+  L227: if (lStack_1a8 == 0) {
+  L227: return param_3;

@@ -1,0 +1,184 @@
+LNone: undefined8 * gml_Script_map_save(longlong *param_1,undefined8 param_2,undefined8 *param_3,int param_4, undefined8 *param_5) {
+  L0: FUN_1416ab750(gml_Script_map_save);
+  L0: if (0 < iVar2) {
+    L0: if (0 < iVar2) {
+      L0: do {
+      L7: } while (cVar1 != '\0');
+    L7: if (lStack_1a8 != 0) {
+  L35: var v_80 = buffer_create(8, 1, 1);
+  L37: buffer_write(buf, buffer_u8, map_n);
+  L38: buffer_write(buf, buffer_u8, mw);
+  L39: buffer_write(buf, buffer_u8, mh);
+  L40: buffer_write(buf, buffer_u8, planet);
+  L41: buffer_write(buf, buffer_u8, horizon);
+  L42: buffer_write(buf, buffer_u8, uStack_1b8);
+  L42: buffer_write(buf, buffer_u8, uStack_1b8);
+  L42: buffer_write(buf, buffer_u8, uStack_1b8);
+  L44: while( true ) {
+    L44: cmp(dStack_168, mw)
+    L44: if ((iVar2 == -2) || (-1 < iVar2)) break;
+    L45: while( true ) {
+      L45: cmp(dStack_178, mh)
+      L45: if ((iVar2 == -2) || (-1 < iVar2)) break;
+      L46: var v_128 = array_get_2D(map, dStack_168, dStack_178);
+      L46: buffer_write(buf, buffer_u16, round(v_128));
+  L50: while( true ) {
+    L50: cmp(dStack_e8, array_length(_layer))
+    L50: if ((iVar2 == -2) || (-1 < iVar2)) break;
+    L51: var v_448 = layer_get_id(_layer);
+    L52: var v_470 = layer_tilemap_get_id(v_448);
+    L53: while( true ) {
+      L53: cmp(dStack_168, mw)
+      L53: if ((iVar2 == -2) || (-1 < iVar2)) break;
+      L54: while( true ) {
+        L54: cmp(dStack_178, mh)
+        L54: if ((iVar2 == -2) || (-1 < iVar2)) break;
+        L55: buffer_write(buf, buffer_u16, tilemap_get(v_470, dStack_168, dStack_178));
+  L61: buffer_write(buf, buffer_u16, ds_list_size(oControl.asset_list[0]));
+  L62: while( true ) {
+    L62: cmp(dStack_e8, ds_list_size(oControl.asset_list[0]))
+    L62: if ((iVar2 == -2) || (-1 < iVar2)) break;
+    L63: var v_b0 = ds_list_find_value(oControl.asset_list[0], dStack_e8);
+    L64: var v_148 = layer_sprite_get_x(v_b0);
+    L64: buffer_write(buf, buffer_u16, round(v_148));
+    L65: var v_148 = layer_sprite_get_y(v_b0);
+    L65: buffer_write(buf, buffer_u16, round(v_148));
+    L66: var v_148 = layer_sprite_get_sprite(v_b0);
+    L66: var v_138 = sprite_get_name(v_148);
+    L66: buffer_write(buf, buffer_string, string(v_138));
+  L70: buffer_write(buf, buffer_u16, ds_list_size(oControl.asset_list[1]));
+  L71: while( true ) {
+    L71: cmp(dStack_e8, ds_list_size(oControl.asset_list[1]))
+    L71: if ((iVar2 == -2) || (-1 < iVar2)) break;
+    L72: var v_b0 = ds_list_find_value(oControl.asset_list[1], dStack_e8);
+    L73: var v_148 = layer_sprite_get_x(v_b0);
+    L73: buffer_write(buf, buffer_u16, round(v_148));
+    L74: var v_148 = layer_sprite_get_y(v_b0);
+    L74: buffer_write(buf, buffer_u16, round(v_148));
+    L75: var v_148 = layer_sprite_get_sprite(v_b0);
+    L75: var v_138 = sprite_get_name(v_148);
+    L75: buffer_write(buf, buffer_string, string(v_138));
+  L75: if (0 < iVar2) {
+    L80: var v_128 = ds_list_find_index(obj_list, uStack_238);
+    L80: ds_list_delete(obj_list, v_128);
+    L81: ds_list_insert(obj_list, 1, uStack_238);
+  L85: buffer_write(buf, buffer_u16, ds_list_size(obj_list));
+  L86: do {
+    L86: cmp(dStack_e8, ds_list_size(obj_list))
+    L86: if ((iVar2 == -2) || (-1 < iVar2)) {
+      L176: if (iStack_44c < 1) {
+      L176: buffer_save(v_80, puVar5);
+      L177: buffer_delete(v_80);
+      L177: return puStack_478;
+    L88: var v_b0 = ds_list_find_value(obj_list, dStack_e8);
+    L88: cmp(is_undefined(v_b0), uStack_1b8)
+    L88: if (iVar2 == 0) {
+      L90: if (cVar1 != '\0') {
+        L92: buffer_write(buf, buffer_s16, v_b0.xstart);
+        L93: buffer_write(buf, buffer_s16, v_b0.ystart);
+        L94: buffer_write(buf, buffer_s16, v_b0.depth);
+        L95: var v_148 = object_get_name(v_b0.object_index);
+        L95: buffer_write(buf, buffer_string, string(v_148));
+        L97: cmp(v_b0.object_index, 81)
+        L97: if (iVar2 == 0) {
+          L98: buffer_write(buf, buffer_u8, v_b0.n);
+          L99: buffer_write(buf, buffer_string, v_b0.rm);
+          L102: test(object_is_ancestor(v_b0.object_index, 50 /*parLootable*/))
+          L102: if (cVar1 == '\0') {
+            L111: test(object_is_ancestor(v_b0.object_index, 51 /*parDoor_out*/))
+            L111: if (cVar1 == '\0') {
+              L115: test(object_is_ancestor(v_b0.object_index, 55 /*parDoor_Flat*/))
+              L115: if (cVar1 == '\0') {
+                L121: cmp(v_b0.object_index, 179)
+                L121: if (iVar2 == 0) {
+                  L122: buffer_write(buf, buffer_u16, v_b0.width);
+                  L123: buffer_write(buf, buffer_u16, v_b0.repeat_t);
+                  L124: buffer_write(buf, buffer_u8, v_b0.material);
+                  L125: buffer_write(buf, buffer_s16, v_b0.dir);
+                  L128: test(object_is_ancestor(v_b0.object_index, 611 /*parNote*/))
+                  L128: if (cVar1 == '\0') {
+                    L133: test(object_is_ancestor(v_b0.object_index, 666 /*oBook*/))
+                    L133: if (cVar1 == '\0') {
+                      L133: cmp(v_b0.object_index, 666)
+                      L133: if (iVar2 != 0) {
+                        L133: if (0 < iVar2) {
+                          L138: test(object_is_ancestor(v_b0.object_index, 207 /*parWire*/))
+                          L138: if (cVar1 != '\0') {
+                            L139: test(variable_instance_exists(v_b0, "anim1"))
+                            L139: if (cVar1 != '\0') {
+                              L140: buffer_write(buf, buffer_s16, round(v_b0.anim1));
+                            L140: test(variable_instance_exists(v_b0, "anim2"))
+                            L140: if (cVar1 != '\0') {
+                              L141: buffer_write(buf, buffer_s16, round(v_b0.anim2));
+                            L141: test(variable_instance_exists(v_b0, "anim3"))
+                            L141: if (cVar1 != '\0') {
+                              L142: buffer_write(buf, buffer_s16, round(v_b0.anim3));
+                            L142: test(variable_instance_exists(v_b0, "anim4"))
+                            L142: if (cVar1 != '\0') {
+                              L143: buffer_write(buf, buffer_s16, round(v_b0.anim4));
+                            L143: test(variable_instance_exists(v_b0, "anim5"))
+                            L143: if (cVar1 != '\0') {
+                              L144: buffer_write(buf, buffer_s16, round(v_b0.anim5));
+                            L144: test(variable_instance_exists(v_b0, "anim6"))
+                            L144: if (cVar1 != '\0') {
+                              L145: buffer_write(buf, buffer_s16, round(v_b0.anim6));
+                            L145: test(variable_instance_exists(v_b0, "anim7"))
+                            L145: if (cVar1 != '\0') {
+                              L146: buffer_write(buf, buffer_s16, round(v_b0.anim7));
+                            L146: test(variable_instance_exists(v_b0, "anim8"))
+                            L146: if (cVar1 != '\0') {
+                              L147: buffer_write(buf, buffer_s16, round(v_b0.anim8));
+                            L147: test(variable_instance_exists(v_b0, "anim9"))
+                            L147: if (cVar1 != '\0') {
+                              L148: buffer_write(buf, buffer_s16, round(v_b0.anim9));
+                            L148: test(variable_instance_exists(v_b0, "d"))
+                            L148: if (cVar1 != '\0') {
+                              L150: buffer_write(buf, buffer_s16, round(v_b0.d[0]));
+                            L150: test(variable_instance_exists(v_b0, "d"))
+                            L150: if (cVar1 != '\0') {
+                              L151: buffer_write(buf, buffer_s16, round(v_b0.d[1]));
+                            L151: test(variable_instance_exists(v_b0, "d"))
+                            L151: if (cVar1 != '\0') {
+                              L152: buffer_write(buf, buffer_s16, round(v_b0.d[2]));
+                            L152: test(variable_instance_exists(v_b0, "d"))
+                            L152: if (cVar1 != '\0') {
+                              L153: buffer_write(buf, buffer_s16, round(v_b0.d[3]));
+                            L153: test(variable_instance_exists(v_b0, "an"))
+                            L153: if (cVar1 != '\0') {
+                              L155: buffer_write(buf, buffer_s16, round(v_b0.an[0]));
+                            L155: test(variable_instance_exists(v_b0, "an"))
+                            L155: if (cVar1 != '\0') {
+                              L156: buffer_write(buf, buffer_s16, round(v_b0.an[1]));
+                            L156: test(variable_instance_exists(v_b0, "an"))
+                            L156: if (cVar1 != '\0') {
+                              L157: buffer_write(buf, buffer_s16, round(v_b0.an[2]));
+                            L157: test(variable_instance_exists(v_b0, "an"))
+                            L157: if (cVar1 != '\0') {
+                              L158: buffer_write(buf, buffer_s16, round(v_b0.an[3]));
+                            L158: test(variable_instance_exists(v_b0, "anim"))
+                            L158: if (cVar1 != '\0') {
+                              L160: buffer_write(buf, buffer_s16, round(v_b0.anim));
+                            L160: test(variable_instance_exists(v_b0, "on"))
+                            L160: if (cVar1 != '\0') {
+                              L161: buffer_write(buf, buffer_s16, round(v_b0.on));
+                            L161: test(variable_instance_exists(v_b0, "power_on"))
+                            L161: if (cVar1 != '\0') {
+                              L162: buffer_write(buf, buffer_s16, round(v_b0.power_on));
+                    L134: buffer_write(buf, buffer_u8, v_b0.book);
+                    L135: buffer_write(buf, buffer_u8, v_b0.book_text);
+                    L129: buffer_write(buf, buffer_string, string(v_b0.text));
+                    L130: buffer_write(buf, buffer_u8, v_b0.page);
+                L116: buffer_write(buf, buffer_u8, v_b0.locked);
+                L117: buffer_write(buf, buffer_u8, v_b0.n);
+                L118: buffer_write(buf, buffer_string, v_b0.rm);
+              L112: buffer_write(buf, buffer_u8, v_b0.locked);
+            L103: buffer_write(buf, buffer_u16, v_b0.locked);
+            L104: buffer_write(buf, buffer_u16, ds_list_size(v_b0.INV));
+            L105: while( true ) {
+              L105: cmp(dStack_1c8, ds_list_size(v_b0.INV))
+              L105: if ((iVar2 == -2) || (-1 < iVar2)) break;
+              L106: var v_128 = ds_list_find_value(v_b0.INV, dStack_1c8);
+              L106: buffer_write(buf, buffer_u16, real(v_128));
+              L107: var v_138 = ds_list_find_value(v_b0.INV_N, dStack_1c8);
+              L107: buffer_write(buf, buffer_u16, real(v_138));
+  L107: } while( true );

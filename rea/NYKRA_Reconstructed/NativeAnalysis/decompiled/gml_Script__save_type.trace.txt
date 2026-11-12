@@ -1,0 +1,56 @@
+LNone: undefined8 * gml_Script__save_type (undefined8 param_1,undefined8 param_2,undefined8 *param_3,int param_4,undefined8 *param_5 ) {
+  L0: FUN_1416ab750(gml_Script__save_type);
+  L68: if (param_4 < 2) {
+  L72: if ((*(int *)(*(longlong *)(*(longlong *)(unaff_GS_OFFSET + 0x58) + (ulonglong)__tls_index * 8) + 4) < _DAT_14217f2c8) && (FUN_14193dcf0(&DAT_14217f2c8), _DAT_14217f2c8 == -1)) {
+  L72: cmp(0x14217f250, uStack_f8)
+  L72: if (iVar3 == 0) {
+    L72: if (3 < uVar7) goto LAB_1400bd2f7;
+      L104: if (param_4 < 1) {
+        L104: if ((*(uint *)((longlong)pdVar9 + 0xc) & 0xffffff) != 0) goto code_r0x0001400bcdf1;
+      L104: buffer_write(buf, buffer_u8, 1);
+      L105: if (param_4 < 1) {
+        L105: if ((*(uint *)((longlong)pdVar9 + 0xc) & 0xffffff) != 0) goto code_r0x0001400bd475;
+      L105: buffer_write(buf, buffer_f32, puVar10);
+      L105: cmp(array_length(puVar10), 1)
+      L105: if (-1 < iVar3) {
+        L114: var v_188 = array_length(puVar10);
+        L114: test(is_string(v_188))
+        L114: if (cVar2 != '\0') break;
+        L114: var v_198 = is_string(v_188);
+        L114: test(is_array(v_198))
+        L114: if (cVar2 != '\0') {
+          L114: var v_158 = array_get_2D(puVar10, 0, 0);
+          L114: test(is_string(v_158))
+          L114: if (cVar2 != '\0') goto code_r0x0001400bd992;
+        L116: if (iStack_bc < 1) {
+        L116: buffer_write(buf, buffer_u8, 3);
+        L117: if (iStack_bc < 1) {
+        L117: buffer_write(buf, buffer_u16, array_length(puVar10));
+        L118: while( true ) {
+          L118: cmp(dStack_a8, array_length(puVar10))
+          L118: if ((iVar3 == -2) || (-1 < iVar3)) break;
+          L119: var v_120 = array_length(puVar10);
+          L120: if (0 < iStack_bc) {
+          L120: gml_Script__save_type_rec(param_1,uStack_88,&uStack_80,2,&puStack_148);
+      L126: if (param_4 < 1) {
+        L126: if ((*(uint *)((longlong)pdVar9 + 0xc) & 0xffffff) != 0) goto code_r0x0001400bd288;
+      L126: buffer_write(buf, buffer_u8, 4);
+      L127: if (param_4 < 1) {
+        L127: if ((*(uint *)((longlong)pdVar9 + 0xc) & 0xffffff) != 0) goto code_r0x0001400bd3f8;
+      L127: buffer_write(buf, buffer_bool, bool(puVar10));
+      L109: if (param_4 < 1) {
+        L109: if ((*(uint *)((longlong)pdVar9 + 0xc) & 0xffffff) != 0) goto code_r0x0001400bd2d6;
+      L109: buffer_write(buf, buffer_u8, 2);
+      L110: if (param_4 < 1) {
+        L110: if ((*(uint *)((longlong)pdVar9 + 0xc) & 0xffffff) != 0) goto code_r0x0001400bd4ea;
+      L110: buffer_write(buf, buffer_string, puVar10);
+    L110: cmp(0x14217f264, uStack_f8)
+    L110: if (iVar3 == 0) {
+    L110: cmp(0x14217f278, uStack_f8)
+    L110: cmp(0x14217f28c, uStack_f8)
+    L110: cmp(0x14217f2a0, uStack_f8)
+    L110: if (iVar3 != 0) {
+      L110: cmp(0x14217f2b4, uStack_f8)
+      L110: if (iVar3 == 0) goto joined_r0x0001400bd5a2;
+    L110: if (uVar7 < 4) goto LAB_1400bcd9d;
+  L110: return param_3;

@@ -1,0 +1,19 @@
+LNone: undefined8 * gml_Script_reset_files(longlong *param_1,undefined8 param_2,undefined8 *param_3) {
+  L0: FUN_1416ab750(gml_Script_reset_files);
+  L2: ds_list_clear(file);
+  L3: var v_128 = file_find_first(uStack_68, 0);
+  L3: cmp(v_128, uStack_68)
+  L3: if (iVar1 != 0) {
+    L5: var v_c8 = string_delete(v_128, uStack_68, 6);
+    L5: ds_list_add(file, v_c8);
+    L6: var v_128 = file_find_next();
+    L6: do {
+      L6: cmp(v_128, uStack_68)
+      L6: if (iVar1 == 0) break;
+      L8: var v_c8 = string_delete(v_128, uStack_68, 6);
+      L8: ds_list_add(file, v_c8);
+      L9: var v_128 = file_find_next();
+      L9: cmp(v_128, uStack_68)
+    L9: } while (iVar1 != 0);
+  L13: file_find_close();
+  L13: return param_3;
